@@ -1,0 +1,6 @@
+source;share/unitree_nav_launch_module/hook/pythonpath.ps1
+source;share/unitree_nav_launch_module/hook/pythonpath.dsv
+source;share/unitree_nav_launch_module/hook/pythonpath.sh
+source;share/unitree_nav_launch_module/hook/ament_prefix_path.ps1
+source;share/unitree_nav_launch_module/hook/ament_prefix_path.dsv
+source;share/unitree_nav_launch_module/hook/ament_prefix_path.sh

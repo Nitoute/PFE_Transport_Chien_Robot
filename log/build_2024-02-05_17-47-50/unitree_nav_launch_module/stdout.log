@@ -1,0 +1,34 @@
+running egg_info
+creating ../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info
+writing ../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/PKG-INFO
+writing dependency_links to ../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/dependency_links.txt
+writing entry points to ../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/entry_points.txt
+writing requirements to ../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/requires.txt
+writing top-level names to ../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/top_level.txt
+writing manifest file '../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/SOURCES.txt'
+reading manifest file '../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/SOURCES.txt'
+writing manifest file '../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build
+creating /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build/lib
+creating /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build/lib/unitree_nav_launch_module
+copying unitree_nav_launch_module/ternary_text_substitution.py -> /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build/lib/unitree_nav_launch_module
+copying unitree_nav_launch_module/__init__.py -> /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build/lib/unitree_nav_launch_module
+running install
+running install_lib
+creating /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages/unitree_nav_launch_module
+copying /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build/lib/unitree_nav_launch_module/ternary_text_substitution.py -> /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages/unitree_nav_launch_module
+copying /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build/lib/unitree_nav_launch_module/__init__.py -> /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages/unitree_nav_launch_module
+byte-compiling /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages/unitree_nav_launch_module/ternary_text_substitution.py to ternary_text_substitution.cpython-310.pyc
+byte-compiling /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages/unitree_nav_launch_module/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/ament_index
+creating /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/ament_index/resource_index
+creating /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/ament_index/resource_index/packages
+copying resource/unitree_nav_launch_module -> /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/ament_index/resource_index/packages
+copying package.xml -> /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module
+running install_egg_info
+Copying ../../../build/unitree_nav_launch_module/unitree_nav_launch_module.egg-info to /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages/unitree_nav_launch_module-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/install.log'

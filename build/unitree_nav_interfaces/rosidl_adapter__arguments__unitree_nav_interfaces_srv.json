@@ -1,0 +1,7 @@
+{
+  "package_name": "unitree_nav_interfaces",
+  "non_idl_tuples": [
+    "/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_interfaces:srv/SetBodyRPY.srv",
+    "/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_interfaces:srv/NavToPose.srv"
+  ]
+}

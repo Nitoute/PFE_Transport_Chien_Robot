@@ -1,0 +1,54 @@
+[0.058s] Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real -- -j24 -l24
+[0.083s] [35m[1mConsolidate compiler generated dependencies of target ros2_udp[0m
+[0.083s] [35m[1mConsolidate compiler generated dependencies of target udp_high[0m
+[0.084s] [35m[1mConsolidate compiler generated dependencies of target jsp_high[0m
+[0.084s] [35m[1mConsolidate compiler generated dependencies of target jsp_low[0m
+[0.084s] [35m[1mConsolidate compiler generated dependencies of target udp_low[0m
+[0.084s] [35m[1mConsolidate compiler generated dependencies of target ros2_position_example[0m
+[0.086s] [35m[1mConsolidate compiler generated dependencies of target ros2_walk_example[0m
+[0.086s] [35m[1mConsolidate compiler generated dependencies of target custom_gait[0m
+[0.095s] [ 31%] Built target jsp_high
+[0.095s] [ 31%] Built target jsp_low
+[0.095s] [ 37%] Built target ros2_udp
+[0.095s] [ 50%] Built target udp_high
+[0.095s] [ 62%] Built target udp_low
+[0.096s] [ 75%] Built target ros2_position_example
+[0.102s] [ 87%] Built target custom_gait
+[0.103s] [100%] Built target ros2_walk_example
+[0.110s] Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real -- -j24 -l24
+[0.161s] Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real
+[0.164s] -- Install configuration: ""
+[0.164s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib
+[0.165s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/libunitree_legged_sdk_amd64.so
+[0.165s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/libunitree_legged_sdk_arm64.so
+[0.165s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/ros2_udp
+[0.165s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/udp_high
+[0.165s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/jsp_high
+[0.165s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/ros2_walk_example
+[0.165s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/ros2_position_example
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/custom_gait
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/udp_low
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/unitree_legged_real/jsp_low
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real//launch
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real//launch/low.launch.py
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real//launch/high.launch.py
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real//config
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real//config/state_only.rviz
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real//config/cmd_only.rviz
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real//config/state_and_cmd.rviz
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/ament_index/resource_index/package_run_dependencies/unitree_legged_real
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/ament_index/resource_index/parent_prefix_path/unitree_legged_real
+[0.166s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/environment/ament_prefix_path.sh
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/environment/ament_prefix_path.dsv
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/environment/path.sh
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/environment/path.dsv
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/local_setup.bash
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/local_setup.sh
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/local_setup.zsh
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/local_setup.dsv
+[0.167s] -- Installing: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.dsv
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/ament_index/resource_index/packages/unitree_legged_real
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/cmake/unitree_legged_realConfig.cmake
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/cmake/unitree_legged_realConfig-version.cmake
+[0.167s] -- Up-to-date: /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.xml
+[0.168s] Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real

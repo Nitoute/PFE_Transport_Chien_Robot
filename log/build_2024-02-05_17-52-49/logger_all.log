@@ -1,0 +1,560 @@
+[0.430s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.430s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=24, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x7f46837e9750>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f4683ab7a30>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f4683ab7a30>>)
+[0.452s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.452s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.452s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.452s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.452s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.452s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.452s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot'
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.452s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.458s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extensions ['ignore', 'ignore_ament_install']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'ignore'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'ignore_ament_install'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extensions ['colcon_pkg']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'colcon_pkg'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extensions ['colcon_meta']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'colcon_meta'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extensions ['ros']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'ros'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extensions ['cmake', 'python']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'cmake'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'python'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extensions ['python_setup_py']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav) by extension 'python_setup_py'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extensions ['ignore', 'ignore_ament_install']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extension 'ignore'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extension 'ignore_ament_install'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extensions ['colcon_pkg']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extension 'colcon_pkg'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extensions ['colcon_meta']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extension 'colcon_meta'
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extensions ['ros']
+[0.459s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav) by extension 'ros'
+[0.461s] DEBUG:colcon.colcon_core.package_identification:Package 'src/unitree_nav/unitree_nav' with type 'ros.ament_cmake' and name 'unitree_nav'
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extensions ['ignore', 'ignore_ament_install']
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extension 'ignore'
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extension 'ignore_ament_install'
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extensions ['colcon_pkg']
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extension 'colcon_pkg'
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extensions ['colcon_meta']
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extension 'colcon_meta'
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extensions ['ros']
+[0.461s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_interfaces) by extension 'ros'
+[0.462s] DEBUG:colcon.colcon_core.package_identification:Package 'src/unitree_nav/unitree_nav_interfaces' with type 'ros.ament_cmake' and name 'unitree_nav_interfaces'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extensions ['ignore', 'ignore_ament_install']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extension 'ignore'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extension 'ignore_ament_install'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extensions ['colcon_pkg']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extension 'colcon_pkg'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extensions ['colcon_meta']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extension 'colcon_meta'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extensions ['ros']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_nav/unitree_nav_launch_module) by extension 'ros'
+[0.462s] DEBUG:colcon.colcon_core.package_identification:Package 'src/unitree_nav/unitree_nav_launch_module' with type 'ros.ament_python' and name 'unitree_nav_launch_module'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'ignore'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'ignore_ament_install'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extensions ['colcon_pkg']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'colcon_pkg'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extensions ['colcon_meta']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'colcon_meta'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extensions ['ros']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'ros'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extensions ['cmake', 'python']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'cmake'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'python'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extensions ['python_setup_py']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2) by extension 'python_setup_py'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extensions ['ignore', 'ignore_ament_install']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extension 'ignore'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extension 'ignore_ament_install'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extensions ['colcon_pkg']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extension 'colcon_pkg'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extensions ['colcon_meta']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extension 'colcon_meta'
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extensions ['ros']
+[0.462s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/go1_description) by extension 'ros'
+[0.463s] DEBUG:colcon.colcon_core.package_identification:Package 'src/unitree_ros2/go1_description' with type 'ros.ament_cmake' and name 'go1_description'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extension 'ignore'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extension 'ignore_ament_install'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extensions ['colcon_pkg']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extension 'colcon_pkg'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extensions ['colcon_meta']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extension 'colcon_meta'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extensions ['ros']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/ros2_unitree_legged_msgs) by extension 'ros'
+[0.463s] DEBUG:colcon.colcon_core.package_identification:Package 'src/unitree_ros2/ros2_unitree_legged_msgs' with type 'ros.ament_cmake' and name 'ros2_unitree_legged_msgs'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extensions ['ignore', 'ignore_ament_install']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extension 'ignore'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extension 'ignore_ament_install'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extensions ['colcon_pkg']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extension 'colcon_pkg'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extensions ['colcon_meta']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extension 'colcon_meta'
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extensions ['ros']
+[0.463s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_gazebo) by extension 'ros'
+[0.464s] DEBUG:colcon.colcon_core.package_identification:Package 'src/unitree_ros2/unitree_gazebo' with type 'ros.ament_cmake' and name 'unitree_gazebo'
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extensions ['ignore', 'ignore_ament_install']
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extension 'ignore'
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extension 'ignore_ament_install'
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extensions ['colcon_pkg']
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extension 'colcon_pkg'
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extensions ['colcon_meta']
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extension 'colcon_meta'
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extensions ['ros']
+[0.464s] Level 1:colcon.colcon_core.package_identification:_identify(src/unitree_ros2/unitree_legged_real) by extension 'ros'
+[0.464s] DEBUG:colcon.colcon_core.package_identification:Package 'src/unitree_ros2/unitree_legged_real' with type 'ros.ament_cmake' and name 'unitree_legged_real'
+[0.464s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.464s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.464s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.464s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.464s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.506s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.506s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.520s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 7 installed packages in /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install
+[0.527s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 376 installed packages in /opt/ros/humble
+[0.527s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'cmake_args' from command line to 'None'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'cmake_target' from command line to 'None'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'cmake_clean_cache' from command line to 'False'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'cmake_clean_first' from command line to 'False'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'cmake_force_configure' from command line to 'False'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'ament_cmake_args' from command line to 'None'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'catkin_cmake_args' from command line to 'None'
+[0.579s] Level 5:colcon.colcon_core.verb:set package 'go1_description' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.579s] DEBUG:colcon.colcon_core.verb:Building package 'go1_description' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description', 'merge_install': False, 'path': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/go1_description', 'symlink_install': False, 'test_result_base': None}
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'cmake_args' from command line to 'None'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'cmake_target' from command line to 'None'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.586s] Level 5:colcon.colcon_core.verb:set package 'ros2_unitree_legged_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.586s] DEBUG:colcon.colcon_core.verb:Building package 'ros2_unitree_legged_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs', 'merge_install': False, 'path': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/ros2_unitree_legged_msgs', 'symlink_install': False, 'test_result_base': None}
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'cmake_args' from command line to 'None'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'cmake_target' from command line to 'None'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[0.592s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.592s] DEBUG:colcon.colcon_core.verb:Building package 'unitree_nav_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces', 'merge_install': False, 'path': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'cmake_args' from command line to 'None'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'cmake_target' from command line to 'None'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'cmake_clean_cache' from command line to 'False'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'cmake_clean_first' from command line to 'False'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'cmake_force_configure' from command line to 'False'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'ament_cmake_args' from command line to 'None'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'catkin_cmake_args' from command line to 'None'
+[0.598s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav_launch_module' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.598s] DEBUG:colcon.colcon_core.verb:Building package 'unitree_nav_launch_module' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module', 'merge_install': False, 'path': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_launch_module', 'symlink_install': False, 'test_result_base': None}
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'cmake_args' from command line to 'None'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'cmake_target' from command line to 'None'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'cmake_clean_cache' from command line to 'False'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'cmake_clean_first' from command line to 'False'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'cmake_force_configure' from command line to 'False'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'ament_cmake_args' from command line to 'None'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'catkin_cmake_args' from command line to 'None'
+[0.604s] Level 5:colcon.colcon_core.verb:set package 'unitree_gazebo' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.604s] DEBUG:colcon.colcon_core.verb:Building package 'unitree_gazebo' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo', 'merge_install': False, 'path': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/unitree_gazebo', 'symlink_install': False, 'test_result_base': None}
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'cmake_args' from command line to 'None'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'cmake_target' from command line to 'None'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'cmake_clean_cache' from command line to 'False'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'cmake_clean_first' from command line to 'False'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'cmake_force_configure' from command line to 'False'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'ament_cmake_args' from command line to 'None'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'catkin_cmake_args' from command line to 'None'
+[0.610s] Level 5:colcon.colcon_core.verb:set package 'unitree_legged_real' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.610s] DEBUG:colcon.colcon_core.verb:Building package 'unitree_legged_real' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real', 'merge_install': False, 'path': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/unitree_legged_real', 'symlink_install': False, 'test_result_base': None}
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'cmake_args' from command line to 'None'
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'cmake_target' from command line to 'None'
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'cmake_clean_cache' from command line to 'False'
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'cmake_clean_first' from command line to 'False'
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'cmake_force_configure' from command line to 'False'
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'ament_cmake_args' from command line to 'None'
+[0.616s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'catkin_cmake_args' from command line to 'None'
+[0.617s] Level 5:colcon.colcon_core.verb:set package 'unitree_nav' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.617s] DEBUG:colcon.colcon_core.verb:Building package 'unitree_nav' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav', 'merge_install': False, 'path': '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav', 'symlink_install': False, 'test_result_base': None}
+[0.622s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.629s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.629s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/ros2_unitree_legged_msgs' with build type 'ament_cmake'
+[0.629s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/ros2_unitree_legged_msgs'
+[0.637s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.637s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.637s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.658s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_interfaces' with build type 'ament_cmake'
+[0.658s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_interfaces'
+[0.664s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.664s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.684s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/go1_description' with build type 'ament_cmake'
+[0.685s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/go1_description'
+[0.691s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.691s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.712s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_launch_module' with build type 'ament_python'
+[0.712s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav_launch_module', 'ament_prefix_path')
+[0.718s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/hook/ament_prefix_path.ps1'
+[0.718s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/hook/ament_prefix_path.dsv'
+[0.719s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/hook/ament_prefix_path.sh'
+[0.725s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.725s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.748s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs -- -j24 -l24
+[0.750s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces -- -j24 -l24
+[0.751s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description -- -j24 -l24
+[0.922s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_launch_module'
+[0.931s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.931s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.960s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description -- -j24 -l24
+[0.978s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description
+[0.979s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs -- -j24 -l24
+[0.980s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces -- -j24 -l24
+[0.983s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(go1_description)
+[0.983s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/go1_description
+[0.993s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description' for CMake module files
+[0.993s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description' for CMake config files
+[0.993s] Level 1:colcon.colcon_core.shell:create_environment_hook('go1_description', 'cmake_prefix_path')
+[1.001s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/hook/cmake_prefix_path.ps1'
+[1.001s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/hook/cmake_prefix_path.dsv'
+[1.001s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/hook/cmake_prefix_path.sh'
+[1.002s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/bin'
+[1.002s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/lib/pkgconfig/go1_description.pc'
+[1.002s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/lib/python3.10/site-packages'
+[1.002s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/bin'
+[1.010s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.ps1'
+[1.011s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.dsv'
+[1.011s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.sh'
+[1.011s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.bash'
+[1.012s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.zsh'
+[1.012s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/colcon-core/packages/go1_description)
+[1.025s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces
+[1.039s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(go1_description)
+[1.047s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description' for CMake module files
+[1.047s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description' for CMake config files
+[1.048s] Level 1:colcon.colcon_core.shell:create_environment_hook('go1_description', 'cmake_prefix_path')
+[1.056s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/hook/cmake_prefix_path.ps1'
+[1.057s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/hook/cmake_prefix_path.dsv'
+[1.057s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/hook/cmake_prefix_path.sh'
+[1.057s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/bin'
+[1.057s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/lib/pkgconfig/go1_description.pc'
+[1.057s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/lib/python3.10/site-packages'
+[1.057s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/bin'
+[1.069s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.ps1'
+[1.069s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.dsv'
+[1.069s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.sh'
+[1.070s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.bash'
+[1.070s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/go1_description/package.zsh'
+[1.070s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description/share/colcon-core/packages/go1_description)
+[1.071s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_nav_interfaces)
+[1.072s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_interfaces
+[1.080s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces' for CMake module files
+[1.080s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces' for CMake config files
+[1.080s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav_interfaces', 'cmake_prefix_path')
+[1.089s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/cmake_prefix_path.ps1'
+[1.089s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/cmake_prefix_path.dsv'
+[1.089s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/cmake_prefix_path.sh'
+[1.090s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib'
+[1.090s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav_interfaces', 'ld_library_path_lib')
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/ld_library_path_lib.ps1'
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/ld_library_path_lib.dsv'
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/ld_library_path_lib.sh'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/bin'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib/pkgconfig/unitree_nav_interfaces.pc'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib/python3.10/site-packages'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/bin'
+[1.107s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.ps1'
+[1.107s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.dsv'
+[1.107s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.sh'
+[1.108s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.bash'
+[1.108s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.zsh'
+[1.108s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/colcon-core/packages/unitree_nav_interfaces)
+[1.133s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs
+[1.162s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_nav_interfaces)
+[1.173s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces' for CMake module files
+[1.174s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces' for CMake config files
+[1.174s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav_interfaces', 'cmake_prefix_path')
+[1.182s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/cmake_prefix_path.ps1'
+[1.182s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/cmake_prefix_path.dsv'
+[1.182s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/cmake_prefix_path.sh'
+[1.182s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib'
+[1.182s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav_interfaces', 'ld_library_path_lib')
+[1.189s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/ld_library_path_lib.ps1'
+[1.190s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/ld_library_path_lib.dsv'
+[1.190s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/hook/ld_library_path_lib.sh'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/bin'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib/pkgconfig/unitree_nav_interfaces.pc'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib/python3.10/site-packages'
+[1.190s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/bin'
+[1.197s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.ps1'
+[1.197s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.dsv'
+[1.197s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.sh'
+[1.198s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.bash'
+[1.198s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/unitree_nav_interfaces/package.zsh'
+[1.198s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/share/colcon-core/packages/unitree_nav_interfaces)
+[1.200s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_unitree_legged_msgs)
+[1.200s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_launch_module': PYTHONPATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/prefix_override:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/unitree_nav_launch_module build --build-base /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build install --record /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/install.log --single-version-externally-managed
+[1.201s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/ros2_unitree_legged_msgs
+[1.207s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs' for CMake module files
+[1.207s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs' for CMake config files
+[1.207s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_unitree_legged_msgs', 'cmake_prefix_path')
+[1.214s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/cmake_prefix_path.ps1'
+[1.214s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/cmake_prefix_path.dsv'
+[1.215s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/cmake_prefix_path.sh'
+[1.215s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib'
+[1.215s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_unitree_legged_msgs', 'ld_library_path_lib')
+[1.222s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/ld_library_path_lib.ps1'
+[1.222s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/ld_library_path_lib.dsv'
+[1.222s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/ld_library_path_lib.sh'
+[1.222s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/bin'
+[1.222s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib/pkgconfig/ros2_unitree_legged_msgs.pc'
+[1.222s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib/python3.10/site-packages'
+[1.222s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/bin'
+[1.236s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.ps1'
+[1.236s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.dsv'
+[1.236s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.sh'
+[1.236s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.bash'
+[1.237s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.zsh'
+[1.237s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/colcon-core/packages/ros2_unitree_legged_msgs)
+[1.355s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav_launch_module' returned '0': PYTHONPATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/prefix_override:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../../build/unitree_nav_launch_module build --build-base /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/build install --record /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav_launch_module/install.log --single-version-externally-managed
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module' for CMake module files
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module' for CMake config files
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/bin'
+[1.362s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/pkgconfig/unitree_nav_launch_module.pc'
+[1.363s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/lib/python3.10/site-packages'
+[1.363s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav_launch_module', 'pythonpath')
+[1.370s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/hook/pythonpath.ps1'
+[1.370s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/hook/pythonpath.dsv'
+[1.370s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/hook/pythonpath.sh'
+[1.370s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/bin'
+[1.370s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_nav_launch_module)
+[1.378s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/package.ps1'
+[1.378s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/package.dsv'
+[1.378s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/package.sh'
+[1.378s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/package.bash'
+[1.378s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/unitree_nav_launch_module/package.zsh'
+[1.378s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module/share/colcon-core/packages/unitree_nav_launch_module)
+[1.386s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(ros2_unitree_legged_msgs)
+[1.393s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs' for CMake module files
+[1.393s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs' for CMake config files
+[1.394s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_unitree_legged_msgs', 'cmake_prefix_path')
+[1.400s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/cmake_prefix_path.ps1'
+[1.401s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/cmake_prefix_path.dsv'
+[1.401s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/cmake_prefix_path.sh'
+[1.401s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib'
+[1.401s] Level 1:colcon.colcon_core.shell:create_environment_hook('ros2_unitree_legged_msgs', 'ld_library_path_lib')
+[1.407s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/ld_library_path_lib.ps1'
+[1.408s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/ld_library_path_lib.dsv'
+[1.408s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/hook/ld_library_path_lib.sh'
+[1.408s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/bin'
+[1.408s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib/pkgconfig/ros2_unitree_legged_msgs.pc'
+[1.408s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib/python3.10/site-packages'
+[1.408s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/bin'
+[1.415s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.ps1'
+[1.415s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.dsv'
+[1.415s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.sh'
+[1.415s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.bash'
+[1.415s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/ros2_unitree_legged_msgs/package.zsh'
+[1.416s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/share/colcon-core/packages/ros2_unitree_legged_msgs)
+[1.416s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/unitree_gazebo' with build type 'ament_cmake'
+[1.416s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/unitree_gazebo'
+[1.422s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.422s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.443s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/unitree_legged_real' with build type 'ament_cmake'
+[1.443s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_ros2/unitree_legged_real'
+[1.450s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.450s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.470s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav' with build type 'ament_cmake'
+[1.471s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/src/unitree_nav/unitree_nav'
+[1.477s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.477s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.500s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo -- -j24 -l24
+[1.502s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real -- -j24 -l24
+[1.505s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav -- -j24 -l24
+[1.549s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real -- -j24 -l24
+[1.550s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav -- -j24 -l24
+[1.553s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --build /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo -- -j24 -l24
+[1.570s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav
+[1.573s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo
+[1.576s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_nav)
+[1.580s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_nav
+[1.588s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav' for CMake module files
+[1.589s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav' for CMake config files
+[1.589s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav', 'cmake_prefix_path')
+[1.596s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/hook/cmake_prefix_path.ps1'
+[1.596s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/hook/cmake_prefix_path.dsv'
+[1.596s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/hook/cmake_prefix_path.sh'
+[1.597s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/lib'
+[1.597s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/bin'
+[1.597s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/lib/pkgconfig/unitree_nav.pc'
+[1.597s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/lib/python3.10/site-packages'
+[1.597s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/bin'
+[1.604s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.ps1'
+[1.604s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.dsv'
+[1.604s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.sh'
+[1.605s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.bash'
+[1.605s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.zsh'
+[1.605s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/colcon-core/packages/unitree_nav)
+[1.607s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real
+[1.608s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_gazebo)
+[1.608s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_gazebo
+[1.617s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo' for CMake module files
+[1.617s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo' for CMake config files
+[1.617s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_gazebo', 'cmake_prefix_path')
+[1.623s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/hook/cmake_prefix_path.ps1'
+[1.624s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/hook/cmake_prefix_path.dsv'
+[1.624s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/hook/cmake_prefix_path.sh'
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/bin'
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/lib/pkgconfig/unitree_gazebo.pc'
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/lib/python3.10/site-packages'
+[1.624s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/bin'
+[1.631s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.ps1'
+[1.631s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.dsv'
+[1.631s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.sh'
+[1.631s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.bash'
+[1.631s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.zsh'
+[1.632s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/colcon-core/packages/unitree_gazebo)
+[1.640s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_nav)
+[1.653s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav' for CMake module files
+[1.653s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav' for CMake config files
+[1.653s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_nav', 'cmake_prefix_path')
+[1.661s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/hook/cmake_prefix_path.ps1'
+[1.662s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/hook/cmake_prefix_path.dsv'
+[1.662s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/hook/cmake_prefix_path.sh'
+[1.662s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/lib'
+[1.662s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/bin'
+[1.662s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/lib/pkgconfig/unitree_nav.pc'
+[1.662s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/lib/python3.10/site-packages'
+[1.663s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/bin'
+[1.669s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.ps1'
+[1.669s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.dsv'
+[1.670s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.sh'
+[1.670s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.bash'
+[1.670s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/unitree_nav/package.zsh'
+[1.670s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav/share/colcon-core/packages/unitree_nav)
+[1.670s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_legged_real)
+[1.671s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real' returned '0': CMAKE_PREFIX_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/go1_description:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_launch_module:/opt/ros/humble LD_LIBRARY_PATH=/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/ros2_unitree_legged_msgs/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_nav_interfaces/lib:/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib /usr/bin/cmake --install /home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/build/unitree_legged_real
+[1.677s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real' for CMake module files
+[1.678s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real' for CMake config files
+[1.678s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_legged_real', 'cmake_prefix_path')
+[1.684s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/cmake_prefix_path.ps1'
+[1.685s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/cmake_prefix_path.dsv'
+[1.685s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/cmake_prefix_path.sh'
+[1.685s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib'
+[1.685s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_legged_real', 'ld_library_path_lib')
+[1.692s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/ld_library_path_lib.ps1'
+[1.692s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/ld_library_path_lib.dsv'
+[1.692s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/ld_library_path_lib.sh'
+[1.692s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/bin'
+[1.692s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/pkgconfig/unitree_legged_real.pc'
+[1.692s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/python3.10/site-packages'
+[1.692s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/bin'
+[1.699s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.ps1'
+[1.699s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.dsv'
+[1.699s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.sh'
+[1.699s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.bash'
+[1.700s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.zsh'
+[1.700s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/colcon-core/packages/unitree_legged_real)
+[1.707s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_gazebo)
+[1.713s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo' for CMake module files
+[1.714s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo' for CMake config files
+[1.714s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_gazebo', 'cmake_prefix_path')
+[1.720s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/hook/cmake_prefix_path.ps1'
+[1.720s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/hook/cmake_prefix_path.dsv'
+[1.720s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/hook/cmake_prefix_path.sh'
+[1.720s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/bin'
+[1.720s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/lib/pkgconfig/unitree_gazebo.pc'
+[1.721s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/lib/python3.10/site-packages'
+[1.721s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/bin'
+[1.727s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.ps1'
+[1.728s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.dsv'
+[1.728s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.sh'
+[1.728s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.bash'
+[1.728s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/unitree_gazebo/package.zsh'
+[1.728s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_gazebo/share/colcon-core/packages/unitree_gazebo)
+[1.735s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(unitree_legged_real)
+[1.741s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real' for CMake module files
+[1.742s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real' for CMake config files
+[1.742s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_legged_real', 'cmake_prefix_path')
+[1.748s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/cmake_prefix_path.ps1'
+[1.748s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/cmake_prefix_path.dsv'
+[1.748s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/cmake_prefix_path.sh'
+[1.749s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib'
+[1.749s] Level 1:colcon.colcon_core.shell:create_environment_hook('unitree_legged_real', 'ld_library_path_lib')
+[1.755s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/ld_library_path_lib.ps1'
+[1.755s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/ld_library_path_lib.dsv'
+[1.755s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/hook/ld_library_path_lib.sh'
+[1.756s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/bin'
+[1.756s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/pkgconfig/unitree_legged_real.pc'
+[1.756s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/lib/python3.10/site-packages'
+[1.756s] Level 1:colcon.colcon_core.environment:checking '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/bin'
+[1.762s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.ps1'
+[1.763s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.dsv'
+[1.763s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.sh'
+[1.763s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.bash'
+[1.763s] INFO:colcon.colcon_core.shell:Creating package script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/unitree_legged_real/package.zsh'
+[1.763s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/unitree_legged_real/share/colcon-core/packages/unitree_legged_real)
+[1.763s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[1.764s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[1.764s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[1.764s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[1.773s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[1.773s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[1.773s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[1.773s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[1.785s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[1.792s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/local_setup.ps1'
+[1.793s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/_local_setup_util_ps1.py'
+[1.794s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/setup.ps1'
+[1.801s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/local_setup.sh'
+[1.801s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/_local_setup_util_sh.py'
+[1.801s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/setup.sh'
+[1.809s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/local_setup.bash'
+[1.809s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/setup.bash'
+[1.816s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/local_setup.zsh'
+[1.816s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/sora/travail/m2/s10/PFE_Transport_Chien_Robot/install/setup.zsh'
