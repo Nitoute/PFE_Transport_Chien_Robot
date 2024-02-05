@@ -1,6 +1,0 @@
-[submodule "unitree_ros2"]
-	path = unitree_ros2
-	url = git@github.com:katie-hughes/unitree_ros2.git
-[submodule "unitree_nav"]
-	path = unitree_nav
-	url = git@github.com:Marnonel6/unitree_nav.git
