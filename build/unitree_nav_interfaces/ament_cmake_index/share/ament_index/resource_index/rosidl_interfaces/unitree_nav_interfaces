@@ -1,8 +1,0 @@
-srv/NavToPose.idl
-srv/NavToPose.srv
-srv/NavToPose_Request.msg
-srv/NavToPose_Response.msg
-srv/SetBodyRPY.idl
-srv/SetBodyRPY.srv
-srv/SetBodyRPY_Request.msg
-srv/SetBodyRPY_Response.msg

@@ -1,9 +1,0 @@
-setup.py
-unitree_nav_interfaces/__init__.py
-unitree_nav_interfaces.egg-info/PKG-INFO
-unitree_nav_interfaces.egg-info/SOURCES.txt
-unitree_nav_interfaces.egg-info/dependency_links.txt
-unitree_nav_interfaces.egg-info/top_level.txt
-unitree_nav_interfaces/srv/__init__.py
-unitree_nav_interfaces/srv/_nav_to_pose.py
-unitree_nav_interfaces/srv/_set_body_rpy.py
