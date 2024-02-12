@@ -16,12 +16,10 @@ ament_export_dependencies(
 
 find_package(rclcpp REQUIRED)
 find_package(controller_manager REQUIRED)
-# find_package(genmsg REQUIRED)
-# find_package(joint_state_controller REQUIRED)
 find_package(robot_state_publisher REQUIRED)
 find_package(gazebo_ros REQUIRED)
 find_package(std_msgs REQUIRED)
-# find_package(tf REQUIRED)
+find_package(tf2 REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(ros2_unitree_legged_msgs REQUIRED)
 find_package(gazebo REQUIRED)

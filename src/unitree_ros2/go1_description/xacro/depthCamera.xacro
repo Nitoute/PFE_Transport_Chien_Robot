@@ -55,7 +55,7 @@
                         <far>5</far>
                     </clip>
                 </camera>
-                <plugin name="camera_${name}_controller" filename="libgazebo_ros_openni_kinect.so">
+                <plugin name="camera_${name}_controller" filename="libgazebo_ros2_openni_kinect.so">
                     <baseline>0.025</baseline>
                     <alwaysOn>true</alwaysOn>
                     <updateRate>0.0</updateRate>

@@ -9,6 +9,8 @@
 
     <buildtool_depend>ament_cmake</buildtool_depend>
     <depend>ros2_unitree_legged_msgs</depend>
+    <depend>ros2_control</depend>
+    <depend>ros2_controllers</depend>
     <depend>controller_manager</depend>
     <!-- <depend>joint_state_controller</depend> -->
     <depend>robot_state_publisher</depend>

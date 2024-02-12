@@ -2,9 +2,9 @@
 <robot>
     <!-- ros_control plugin -->
     <gazebo>
-        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+        <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
             <robotNamespace>/go1_gazebo</robotNamespace>
-            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+            <robotSimType>gazebo_ros2_control/DefaultRobotHWSim</robotSimType>
         </plugin>
     </gazebo>
 
@@ -33,7 +33,7 @@
     </gazebo> -->
 
     <gazebo>
-        <plugin filename="libgazebo_ros_force.so" name="gazebo_ros_force">
+        <plugin filename="libgazebo_ros2_force.so" name="gazebo_ros2_force">
             <bodyName>trunk</bodyName>
             <topicName>/apply_force/trunk</topicName>
         </plugin>
@@ -46,7 +46,7 @@
             <update_rate>1000</update_rate>
             <visualize>true</visualize>
             <topic>__default_topic__</topic>
-            <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+            <plugin filename="libgazebo_ros2_imu_sensor.so" name="imu_plugin">
                 <topicName>trunk_imu</topicName>
                 <bodyName>imu_link</bodyName>
                 <updateRateHZ>1000.0</updateRateHZ>
@@ -61,7 +61,7 @@
 
     <!-- Depth camera -->
     <!-- <gazebo>
-        <plugin name="camera_plugin" filename="libgazebo_ros_openni_kinect.so">
+        <plugin name="camera_plugin" filename="libgazebo_ros2_openni_kinect.so">
             <baseline>0.025</baseline>
             <always_on>true</always_on>
             <updateRate>0.0</updateRate>
@@ -105,7 +105,7 @@
                     <far>100</far>
                 </clip>
             </camera>
-            <plugin name="camera_plugin" filename="libgazebo_ros_openni_kinect.so">
+            <plugin name="camera_plugin" filename="libgazebo_ros2_openni_kinect.so">
                 <baseline>0.025</baseline>
                 <always_on>true</always_on>
                 <updateRate>0.0</updateRate>
@@ -147,7 +147,7 @@
           <far>3</far>
         </clip>
       </camera>
-      <plugin name="camera_link_controller" filename="libgazebo_ros_openni_kinect.so">
+      <plugin name="camera_link_controller" filename="libgazebo_ros2_openni_kinect.so">
         <baseline>0.2</baseline>
         <alwaysOn>true</alwaysOn>
         <updateRate>1.0</updateRate>
