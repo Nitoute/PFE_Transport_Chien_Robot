@@ -3,7 +3,5 @@ ENV scripts=./scripts
 WORKDIR /home/ubuntu
 COPY . ./go1_transport
 WORKDIR /home/ubuntu/go1_transport
-RUN ${scripts}/install-lcm.sh && ${scripts}/setup-ros-repo.sh && ${scripts}/install-ros-packages.sh
-RUN sudo apt install ros-humble-ament-cmake -y
+RUN ${scripts}/install-lcm.sh && ${scripts}/install-opencv.sh && ${scripts}/setup-ros-repo.sh && ${scripts}/install-ros-packages.sh
 RUN source /opt/ros/humble/setup.bash
-# RUN colcon build
