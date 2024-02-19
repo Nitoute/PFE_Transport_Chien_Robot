@@ -1,15 +1,6 @@
-[submodule "src/unitree_ros2"]
-	path = src/unitree_ros2
-	url = git@github.com:katie-hughes/unitree_ros2.git
-[submodule "src/unitree_nav"]
-	path = src/unitree_nav
-	url = git@github.com:Marnonel6/unitree_nav.git
-[submodule "src/unitree_camera"]
-	path = src/unitree_camera
-	url = git@github.com:ngmor/unitree_camera.git
-[submodule "src/UnitreecameraSDK"]
-	path = src/UnitreecameraSDK
-	url = https://github.com/ngmor/UnitreecameraSDK.git
 [submodule "src/unitree_ros"]
 	path = src/unitree_ros
-	url = https://github.com/unitreerobotics/unitree_ros
+	url = git@github.com:unitreerobotics/unitree_ros.git
+[submodule "src/unitree_guide"]
+	path = src/unitree_guide
+	url = git@github.com:unitreerobotics/unitree_guide.git
