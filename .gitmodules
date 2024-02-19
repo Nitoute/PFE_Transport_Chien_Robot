@@ -10,3 +10,6 @@
 [submodule "src/UnitreecameraSDK"]
 	path = src/UnitreecameraSDK
 	url = https://github.com/ngmor/UnitreecameraSDK.git
+[submodule "src/unitree_ros"]
+	path = src/unitree_ros
+	url = https://github.com/unitreerobotics/unitree_ros

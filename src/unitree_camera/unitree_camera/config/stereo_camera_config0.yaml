@@ -59,7 +59,7 @@ Transmode: !!opencv-matrix
    rows: 1
    cols: 1
    dt: d
-   data: [ -1. ] 
+   data: [ 3. ] 
 #Transmission rate
 Transrate: !!opencv-matrix
    rows: 1
