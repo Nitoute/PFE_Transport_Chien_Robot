@@ -6,4 +6,4 @@
 	url = git@github.com:unitreerobotics/unitree_guide.git
 [submodule "src/UnitreecameraSDK"]
 	path = src/UnitreecameraSDK
-	url = git@github.com:ngmor/UnitreecameraSDK.git
+	url = git@github.com:Soralsei/UnitreecameraSDK.git
