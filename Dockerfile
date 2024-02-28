@@ -7,7 +7,7 @@ WORKDIR /home/ubuntu
 ADD ./opencv ./opencv
 ADD ./lcm-1.4.0.zip PFE_Transport_Chien_Robot/
 ADD ./${scripts} PFE_Transport_Chien_Robot/${scripts}
-RUN PFE_Transport_Chien_Robot/${scripts}/install-lcm.sh & PFE_Transport_Chien_Robot/${scripts}/install-opencv.sh
+RUN PFE_Transport_Chien_Robot/${scripts}/install-lcm.sh && PFE_Transport_Chien_Robot/${scripts}/install-opencv.sh
 
 RUN <<EOF
 set -e
@@ -29,6 +29,8 @@ RUN --mount=type=cache,target=/var/cache/apt \
     gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio \
     # apt-get install -y \
     build-essential \
+    libudev-dev\
+    liblcm-dev\
     python3-catkin-pkg \
     python3-rosdep \
     python3-rosinstall \
@@ -42,11 +44,11 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-robot-state-publisher \
     ros-${ROS_DISTRO}-xacro \
     ros-${ROS_DISTRO}-cv-bridge \
-    ros-${ROS_DISTRO}-image-transport\
+    ros-${ROS_DISTRO}-image-transport \
     ros-${ROS_DISTRO}-rtabmap-ros && \
     apt-get autoremove -y
 
 WORKDIR /home/ubuntu/PFE_Transport_Chien_Robot
 ADD src ./src
 ADD test.py .
-# RUN /bin/bash ${scripts}/build-project.sh
+RUN /bin/bash ${scripts}/build-project.sh

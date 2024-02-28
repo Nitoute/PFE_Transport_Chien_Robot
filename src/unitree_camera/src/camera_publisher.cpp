@@ -44,7 +44,7 @@ public:
         }
 
         // Timers
-        timer_ = nh_.createTimer(ros::Duration(interval_), &ImgPublisher::timer_callback);
+        timer_ = nh_.createTimer(ros::Duration(interval_), boost::bind(&ImgPublisher::timer_callback, this, _1));
 
         frame_size_ = cv::Size{frame_width_, frame_height_};
 
@@ -167,16 +167,17 @@ private:
                 // Get left and right images from returned frame
                 raw_frame(cv::Rect(raw_frame.size().width / 2, 0, raw_frame.size().width / 2, raw_frame.size().height))
                     .copyTo(raw_left);
-                raw_frame(cv::Rect(0, 0, raw_frame.size().width / 2, raw_frame.size().height)).copyTo(raw_right);
+                raw_frame(cv::Rect(0, 0, raw_frame.size().width / 2, raw_frame.size().height))
+                    .copyTo(raw_right);
 
                 // Publish frames
-                sensor_msgs::ImageConstPtr msg_raw_left = cv_bridge::CvImage(header, color_encoding_, raw_left).toImageMsg();
+                sensor_msgs::ImagePtr msg_raw_left = cv_bridge::CvImage(header, color_encoding_, raw_left).toImageMsg();
                 msg_raw_left->header = header;
-                pub_raw_left_.publish(msg_raw_left, camera_info_);
+                pub_raw_left_.publish(*msg_raw_left, camera_info_);
 
-                sensor_msgs::ImageConstPtr msg_raw_right = cv_bridge::CvImage(header, color_encoding_, raw_right).toImageMsg();
+                sensor_msgs::ImagePtr msg_raw_right = cv_bridge::CvImage(header, color_encoding_, raw_right).toImageMsg();
                 msg_raw_right->header = header;
-                pub_raw_right_.publish(msg_raw_right, camera_info_);
+                pub_raw_right_.publish(*msg_raw_right, camera_info_);
             }
         }
 
@@ -194,11 +195,11 @@ private:
                 // Publish frames
                 sensor_msgs::ImagePtr msg_rect_left = cv_bridge::CvImage(header, color_encoding_, rect_left).toImageMsg();
                 msg_rect_left->header = header;
-                pub_rect_left_.publish(msg_rect_left, camera_info_);
+                pub_rect_left_.publish(*msg_rect_left, camera_info_);
 
                 sensor_msgs::ImagePtr msg_rect_right = cv_bridge::CvImage(header, color_encoding_, rect_right).toImageMsg();
                 msg_rect_right->header = header;
-                pub_rect_right_.publish(msg_rect_right, camera_info_);
+                pub_rect_right_.publish(*msg_rect_right, camera_info_);
             }
         }
 
@@ -219,12 +220,12 @@ private:
             }
         }
     }
-
-    int main(int argc, char **argv)
-    {
-        ros::init(argc, argv, "img_publisher");
-        ImgPublisher img_publisher;
-        ros::spin();
-        return 0;
-    }
 };
+
+int main(int argc, char **argv)
+{
+    ros::init(argc, argv, "img_publisher");
+    ImgPublisher img_publisher;
+    ros::spin();
+    return 0;
+}
