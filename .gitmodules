@@ -3,7 +3,7 @@
 	url = git@github.com:unitreerobotics/unitree_ros.git
 [submodule "src/unitree_guide"]
 	path = src/unitree_guide
-	url = git@github.com:unitreerobotics/unitree_guide.git
+	url = git@github.com:Soralsei/unitree_guide.git
 [submodule "src/UnitreecameraSDK"]
 	path = src/UnitreecameraSDK
 	url = git@github.com:Soralsei/UnitreecameraSDK.git
