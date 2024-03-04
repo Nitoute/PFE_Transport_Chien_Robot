@@ -49,19 +49,18 @@ include_directories(SYSTEM
 ## Declare a C++ library
 add_library(${PROJECT_NAME}
   src/${PUB_NAME}.cpp
-  src/point_cloud_node.cpp
 )
 
-add_executable(${PUB_NAME} src/${PUB_NAME}.cpp)
-add_executable(point_cloud_node src/point_cloud_node.cpp)
-
-add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
-
 ## Specify libraries to link a library or executable target against
+add_executable(${PUB_NAME} src/${PUB_NAME}.cpp)
+add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(${PUB_NAME}
   ${catkin_LIBRARIES}
   UnitreeCameraSDK
 )
+
+add_executable(point_cloud_node src/point_cloud_node.cpp)
+add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(point_cloud_node
   ${catkin_LIBRARIES}
   UnitreeCameraSDK
@@ -69,6 +68,6 @@ target_link_libraries(point_cloud_node
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
-install(TARGETS ${PUB_NAME} point_cloud_node
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-)
+# install(TARGETS ${PUB_NAME} point_cloud_node
+#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+# )

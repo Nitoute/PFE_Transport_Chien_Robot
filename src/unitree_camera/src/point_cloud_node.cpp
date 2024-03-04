@@ -373,31 +373,34 @@
 #include <pcl/filters/statistical_outlier_removal.h>
 #include <UnitreeCameraSDK.hpp>
 
-class UnitreeCameraNode {
+class DepthPublisher
+{
 public:
-    UnitreeCameraNode(double offsetTime) : nh_("~"), offsetTime_(offsetTime) {
+    DepthPublisher(double offsetTime) : nodeHandle("~"), offsetTime_(offsetTime)
+    {
         init();
     }
 
-    ~UnitreeCameraNode() {
+    ~DepthPublisher()
+    {
         cleanup();
     }
 
-    void run() {
-        while (ros::ok() && cam_.isOpened()) {
-            if (killSignalFlag) {
-                break;
-            }
-
+    void run()
+    {
+        while (ros::ok() && cam_->isOpened())
+        {
             std::chrono::microseconds timeStamp;
             std::vector<PCLType> curPCL;
 
-            if (!cam_.getPointCloud(curPCL, timeStamp)) {
+            if (!cam_->getPointCloud(curPCL, timeStamp))
+            {
                 usleep(1000);
                 continue;
             }
 
-            if (camPosNum == 2) {
+            if (camPosNum == 2)
+            {
                 sleep(0.005);
                 continue;
             }
@@ -406,36 +409,43 @@ public:
             processPointCloud(curPCL, cloud);
 
             publishPointCloud(cloud, timeStamp);
-            publishRanges(cloud);
+            publishRanges(cloud, timeStamp);
 
             ros::spinOnce();
         }
     }
 
 private:
-    void init() {
-
+    void init()
+    {
         std::string config_file;
-        nh_.getParam("config_file", config_file);
+        nodeHandle.getParam("config_file", config_file);
         std::string run_config_file;
-        nh_.param<std::string>("run_config_file", run_config_file, "");
+        nodeHandle.param<std::string>("run_config_file", run_config_file, "");
 
         std::string cameraConfig;
 
-        if (config_file.size() != 0) {
+        if (config_file.size() != 0)
+        {
             cameraConfig = config_file;
-        } else if (run_config_file.size() != 0) {
+        }
+        else if (run_config_file.size() != 0)
+        {
             cameraConfig = run_config_file;
         }
 
         std::cout << "Camera Config File:" << cameraConfig << std::endl;
 
-        cam_ = UnitreeCamera(cameraConfig);
+        fprintf(stderr, "Opening camera");
+        cam_ = new UnitreeCamera(cameraConfig);
 
-        if (!cam_.isOpened())
+        if (!cam_->isOpened()) {
+            fprintf(stderr, "Failed to open camera");
             return;
+        }
+        printf("Camera OK");
 
-        camPosNum = cam_.getPosNumber();
+        camPosNum = cam_->getPosNumber();
         frameIdName = "trunk";
         pointCloudName = "point_cloud_";
         rangeName = "range_visual_";
@@ -443,17 +453,20 @@ private:
         initCamera();
     }
 
-    void cleanup() {
-        cam_.stopStereoCompute();
+    void cleanup()
+    {
+        cam_->stopStereoCompute();
         usleep(500000);
-        cam_.stopCapture();
+        cam_->stopCapture();
     }
 
-    void processPointCloud(const std::vector<PCLType>& curPCL, pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud) {
+    void processPointCloud(const std::vector<PCLType> &curPCL, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+    {
         cv::Mat vectorInCamFrame = (cv::Mat_<float>(4, 1) << 0, 0, 0, 1);
         cv::Mat vectorInBodyFrame = (cv::Mat_<float>(4, 1) << 0, 0, 0, 1);
 
-        for (const auto& pclType : curPCL) {
+        for (const auto &pclType : curPCL)
+        {
             pcl::PointXYZRGB point;
             vectorInCamFrame.at<float>(0, 0) = pclType.pts(0);
             vectorInCamFrame.at<float>(1, 0) = pclType.pts(1);
@@ -481,12 +494,14 @@ private:
         cloud = cloud_filtered;
     }
 
-    void filterPointCloud(pcl::PointXYZRGB& point, const PCLType& pclType, pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud) {
+    void filterPointCloud(pcl::PointXYZRGB &point, const PCLType &pclType, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
+    {
         float px = pclType.pts(0);
         float py = pclType.pts(1);
         float pz = pclType.pts(2);
 
-        if (camPosNum == 1) {
+        if (camPosNum == 1)
+        {
             if (point.z > 0.15)
                 return;
             if (px < 0.05)
@@ -495,22 +510,30 @@ private:
                 return;
             if (!(py < 0.5 && py > -0.5))
                 return;
-        } else if (camPosNum == 2) {
+        }
+        else if (camPosNum == 2)
+        {
             float tanPtx = std::abs(pz / px);
             float tanPty = std::abs(pz / py);
             if (tanPtx < tanTheta_ || tanPty < tanTheta_ || (tanPtx < tanBk_ && px < 0))
                 return;
-        } else if (camPosNum == 3) { // left
+        }
+        else if (camPosNum == 3)
+        {                                                                            // left
             if (point.z > 0.15 || std::abs(py / px) < std::tan(M_PI / 180.0 * 40.0)) // range of 100
                 return;
             if (!(py > 0.1 && px < 0.35 && px > -0.35))
                 return;
-        } else if (camPosNum == 4) { // right
+        }
+        else if (camPosNum == 4)
+        {                                                                            // right
             if (point.z > 0.15 || std::abs(py / px) < std::tan(M_PI / 180.0 * 40.0)) // range of 100
                 return;
             if (!(py < -0.1 && px < 0.35 && px > -0.35))
                 return;
-        } else if (camPosNum == 5) {
+        }
+        else if (camPosNum == 5)
+        {
             if (std::abs(pz / py) < tanTheta_ || std::abs(pz / px) < tanTheta_)
                 return;
             if (!(point.z < -0.05 && point.y >= -0.35 && point.y <= 0.35 && point.x < 0.80 && point.x > -0.8))
@@ -523,182 +546,231 @@ private:
         cloud->points.push_back(point);
     }
 
-    void publishPointCloud(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud, const std::chrono::microseconds& timeStamp) {
+    void publishPointCloud(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud, const std::chrono::microseconds &timeStamp)
+    {
         sensor_msgs::PointCloud2 cloud_publish_msg;
         pcl::toROSMsg(*cloud, cloud_publish_msg);
         cloud_publish_msg.header.frame_id = "trunk";
+        ros::Time::now();
         cloud_publish_msg.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
         topic_publisher_.publish(cloud_publish_msg);
     }
 
-    void publishRanges(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud) {
-        sensor_msgs::Range range;
+    void publishRanges(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud, const std::chrono::microseconds &timeStamp)
+    {
+        float dmin = 2.0f;
+        switch (camPosNum)
+        {
+        case 1:
+            for (size_t i = 0; i < cloud->size(); i++)
+            {
+                if (std::fabs(cloud->at(i).z + 0.3) > 0.2 && cloud->at(i).x < dmin)
+                    dmin = cloud->at(i).x;
+            }
 
-        switch (camPosNum) {
+            publishRange(cloud, timeStamp, dmin - 0.2747, "camera_face");
+            break;
+        case 3:
+            for (size_t i = 0; i < cloud->size(); i++)
+            {
+                if (std::fabs(cloud->at(i).z + 0.3) > 0.2 && std::fabs(cloud->at(i).y) < dmin)
+                    dmin = std::fabs(cloud->at(i).y);
+            }
+            publishRange(cloud, timeStamp, dmin - 0.0826, "camera_left");
+            // publishLeftRange(cloud);
+            break;
+        case 4:
+            for (size_t i = 0; i < cloud->size(); i++)
+            {
+                if (std::fabs(cloud->at(i).z + 0.3) > 0.15 && std::fabs(cloud->at(i).y) < dmin)
+                    dmin = std::fabs(cloud->at(i).y);
+            }
+            publishRange(cloud, timeStamp, dmin - 0.0826, "camera_right");
+            // publishRightRange(cloud);
+            break;
+        }
+    }
+
+    void publishRange(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud, const std::chrono::microseconds &timeStamp, float r, const char *frame_id)
+    {
+        sensor_msgs::Range range;
+        range.range = r;
+        range.field_of_view = 90.0 / 180.0 * M_PI;
+        range.min_range = 0.05;
+        range.max_range = 2.0;
+        range.radiation_type = sensor_msgs::Range::ULTRASOUND;
+        range.header.frame_id = frame_id;
+        range.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
+        range_publisher_.publish(range);
+    }
+
+    // void publishFrontRange(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud, const std::chrono::microseconds &timeStamp)
+    // {
+    //     float dmin = 2.0;
+
+    //     for (size_t i = 0; i < cloud->size(); i++)
+    //     {
+    //         if (std::fabs(cloud->at(i).z + 0.3) > 0.2 && cloud->at(i).x < dmin)
+    //             dmin = cloud->at(i).x;
+    //     }
+
+    //     sensor_msgs::Range range;
+    //     range.range = dmin - 0.2747;
+    //     range.field_of_view = 90.0 / 180.0 * M_PI;
+    //     range.min_range = 0.05;
+    //     range.max_range = 2.0;
+    //     range.radiation_type = sensor_msgs::Range::ULTRASOUND;
+    //     range.header.frame_id = "camera_face";
+    //     range.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
+    //     range_publisher_.publish(range);
+    // }
+
+    // void publishLeftRange(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud, const std::chrono::microseconds &timeStamp)
+    // {
+    //     float dmin = 2.0;
+
+    //     for (size_t i = 0; i < cloud->size(); i++)
+    //     {
+    //         if (std::fabs(cloud->at(i).z + 0.3) > 0.2 && std::fabs(cloud->at(i).y) < dmin)
+    //             dmin = std::fabs(cloud->at(i).y);
+    //     }
+
+    //     sensor_msgs::Range range;
+    //     range.range = dmin - 0.0826;
+    //     range.field_of_view = 90.0 / 180.0 * M_PI;
+    //     range.min_range = 0.05;
+    //     range.max_range = 2.0;
+    //     range.radiation_type = sensor_msgs::Range::ULTRASOUND;
+    //     range.header.frame_id = "camera_left";
+    //     range.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
+    //     range_publisher_.publish(range);
+    // }
+
+    // void publishRightRange(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud, const std::chrono::microseconds &timeStamp)
+    // {
+    //     float dmin = 2.0;
+
+    //     for (size_t i = 0; i < cloud->size(); i++)
+    //     {
+    //         if (std::fabs(cloud->at(i).z + 0.3) > 0.15 && std::fabs(cloud->at(i).y) < dmin)
+    //             dmin = std::fabs(cloud->at(i).y);
+    //     }
+
+    //     sensor_msgs::Range range;
+    //     range.range = dmin - 0.0826;
+    //     range.field_of_view = 90.0 / 180.0 * M_PI;
+    //     range.min_range = 0.05;
+    //     range.max_range = 2.0;
+    //     range.radiation_type = sensor_msgs::Range::ULTRASOUND;
+    //     range.header.frame_id = "camera_right";
+    //     range.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
+    //     range_publisher_.publish(range);
+    // }
+
+    void initCamera()
+    {
+        if (camPosNum != 2)
+        {
+            cam_->startStereoCompute();
+
+            switch (camPosNum)
+            {
             case 1:
-                publishFrontRange(cloud);
+                pointCloudName += "face";
+                rangeName += "face";
+                break;
+            case 2:
+                pointCloudName += "chin";
                 break;
             case 3:
-                publishLeftRange(cloud);
+                pointCloudName += "left";
+                rangeName += "left";
                 break;
             case 4:
-                publishRightRange(cloud);
+                pointCloudName += "right";
+                rangeName += "right";
                 break;
-        }
-    }
-
-    void publishFrontRange(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud) {
-        float dmin = 2.0;
-
-        for (size_t i = 0; i < cloud->size(); i++) {
-            if (std::fabs(cloud->at(i).z + 0.3) > 0.2 && cloud->at(i).x < dmin)
-                dmin = cloud->at(i).x;
-        }
-
-        sensor_msgs::Range range;
-        range.range = dmin - 0.2747;
-        range.field_of_view = 90.0 / 180.0 * M_PI;
-        range.min_range = 0.05;
-        range.max_range = 2.0;
-        range.radiation_type = sensor_msgs::Range::ULTRASOUND;
-        range.header.frame_id = "camera_face";
-        range.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
-        range_publisher_.publish(range);
-    }
-
-    void publishLeftRange(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud) {
-        float dmin = 2.0;
-
-        for (size_t i = 0; i < cloud->size(); i++) {
-            if (std::fabs(cloud->at(i).z + 0.3) > 0.2 && std::fabs(cloud->at(i).y) < dmin)
-                dmin = std::fabs(cloud->at(i).y);
-        }
-
-        sensor_msgs::Range range;
-        range.range = dmin - 0.0826;
-        range.field_of_view = 90.0 / 180.0 * M_PI;
-        range.min_range = 0.05;
-        range.max_range = 2.0;
-        range.radiation_type = sensor_msgs::Range::ULTRASOUND;
-        range.header.frame_id = "camera_left";
-        range.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
-        range_publisher_.publish(range);
-    }
-
-    void publishRightRange(const pcl::PointCloud<pcl::PointXYZRGB>::Ptr& cloud) {
-        float dmin = 2.0;
-
-        for (size_t i = 0; i < cloud->size(); i++) {
-            if (std::fabs(cloud->at(i).z + 0.3) > 0.15 && std::fabs(cloud->at(i).y) < dmin)
-                dmin = std::fabs(cloud->at(i).y);
-        }
-
-        sensor_msgs::Range range;
-        range.range = dmin - 0.0826;
-        range.field_of_view = 90.0 / 180.0 * M_PI;
-        range.min_range = 0.05;
-        range.max_range = 2.0;
-        range.radiation_type = sensor_msgs::Range::ULTRASOUND;
-        range.header.frame_id = "camera_right";
-        range.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
-        range_publisher_.publish(range);
-    }
-
-    void initCamera() {
-        if (camPosNum != 2) {
-            cam_.startStereoCompute();
-
-            switch (camPosNum) {
-                case 1:
-                    pointCloudName += "face";
-                    rangeName += "face";
-                    break;
-                case 2:
-                    pointCloudName += "chin";
-                    break;
-                case 3:
-                    pointCloudName += "left";
-                    rangeName += "left";
-                    break;
-                case 4:
-                    pointCloudName += "right";
-                    rangeName += "right";
-                    break;
-                case 5:
-                    pointCloudName += "rearDown";
-                    break;
-                default:
-                    break;
+            case 5:
+                pointCloudName += "rearDown";
+                break;
+            default:
+                break;
             }
 
             std::cout << "Camera PositionNumber -> " << camPosNum << " Point Cloud Name ->" << pointCloudName << std::endl;
 
             setupTransformationMatrices();
 
-            topic_publisher_ = nh_.advertise<sensor_msgs::PointCloud2>(pointCloudName, 1);
+            topic_publisher_ = nodeHandle.advertise<sensor_msgs::PointCloud2>(pointCloudName, 1);
 
             if (camPosNum == 1 || camPosNum == 3 || camPosNum == 4)
-                range_publisher_ = nh_.advertise<sensor_msgs::Range>(rangeName, 1);
-        }
-
-        offsetTime_ = static_cast<double>(std::atof(argv_[3]));
-    }
-
-    void setupTransformationMatrices() {
-        switch (camPosNum) {
-            case 1:
-                theta_ = 2.0 * M_PI / 3.0 + M_PI / 18;
-                tanTheta_ = std::tan((M_PI - theta_) / 2);
-                translationCamToBody_ = (cv::Mat_<float>(3, 1) << 0.28, 0.010, 0.0536);
-                rotationCamToBody_ = getTranslationMatrix('x', M_PI) * getTranslationMatrix('y', M_PI / 2.0) * getTranslationMatrix('z', -M_PI / 2);
-                break;
-            case 2:
-                theta_ = 2.0 * M_PI / 3.0 + M_PI / 18;
-                tanBk_ = std::tan(M_PI / 4 - M_PI / 16);
-                tanTheta_ = std::tan((M_PI - theta_) / 2);
-                translationCamToBody_ = (cv::Mat_<float>(3, 1) << 0.287, 0.010, -0.0046);
-                rotationCamToBody_ = getTranslationMatrix('z', M_PI) * getTranslationMatrix('y', -M_PI / 48) * getTranslationMatrix('y', M_PI) * getTranslationMatrix('z', -M_PI / 2);
-                break;
-            case 3:
-                tanTheta_ = std::tan(M_PI / 2.5);
-                translationCamToBody_ = (cv::Mat_<float>(3, 1) << -0.0135, 0.080, 0.0136);
-                rotationCamToBody_ = getTranslationMatrix('y', M_PI) * getTranslationMatrix('x', -(M_PI / 2 - M_PI / 16));
-                break;
-            case 4:
-                theta_ = M_PI * 5.0 / 6.0 - M_PI * 2 / 9;
-                tanTheta_ = std::tan((M_PI - theta_) / 2.0);
-                translationCamToBody_ = (cv::Mat_<float>(3, 1) << -0.0105, -0.080, 0.0236);
-                rotationCamToBody_ = getTranslationMatrix('y', M_PI) * getTranslationMatrix('x', (M_PI / 2.0 - M_PI / 16.0)) * getTranslationMatrix('z', M_PI);
-                break;
-            case 5:
-                theta_ = M_PI * 2.0 / 3.0;
-                tanTheta_ = std::tan((M_PI - theta_) / 2.0);
-                translationCamToBody_ = (cv::Mat_<float>(3, 1) << -0.0505, 0, -0.0055);
-                rotationCamToBody_ = getTranslationMatrix('x', M_PI) * getTranslationMatrix('z', -M_PI / 2);
-                break;
-            default:
-                break;
+                range_publisher_ = nodeHandle.advertise<sensor_msgs::Range>(rangeName, 1);
         }
     }
 
-    cv::Mat getTranslationMatrix(char axis, float angle) {
+    void setupTransformationMatrices()
+    {
+        switch (camPosNum)
+        {
+        case 1:
+            theta_ = 2.0 * M_PI / 3.0 + M_PI / 18;
+            tanTheta_ = std::tan((M_PI - theta_) / 2);
+            translationCamToBody_ = (cv::Mat_<float>(3, 1) << 0.28, 0.010, 0.0536);
+            rotationCamToBody_ = getTranslationMatrix('x', M_PI) * getTranslationMatrix('y', M_PI / 2.0) * getTranslationMatrix('z', -M_PI / 2);
+            break;
+        case 2:
+            theta_ = 2.0 * M_PI / 3.0 + M_PI / 18;
+            tanBk_ = std::tan(M_PI / 4 - M_PI / 16);
+            tanTheta_ = std::tan((M_PI - theta_) / 2);
+            translationCamToBody_ = (cv::Mat_<float>(3, 1) << 0.287, 0.010, -0.0046);
+            rotationCamToBody_ = getTranslationMatrix('z', M_PI) * getTranslationMatrix('y', -M_PI / 48) * getTranslationMatrix('y', M_PI) * getTranslationMatrix('z', -M_PI / 2);
+            break;
+        case 3:
+            tanTheta_ = std::tan(M_PI / 2.5);
+            translationCamToBody_ = (cv::Mat_<float>(3, 1) << -0.0135, 0.080, 0.0136);
+            rotationCamToBody_ = getTranslationMatrix('y', M_PI) * getTranslationMatrix('x', -(M_PI / 2 - M_PI / 16));
+            break;
+        case 4:
+            theta_ = M_PI * 5.0 / 6.0 - M_PI * 2 / 9;
+            tanTheta_ = std::tan((M_PI - theta_) / 2.0);
+            translationCamToBody_ = (cv::Mat_<float>(3, 1) << -0.0105, -0.080, 0.0236);
+            rotationCamToBody_ = getTranslationMatrix('y', M_PI) * getTranslationMatrix('x', (M_PI / 2.0 - M_PI / 16.0)) * getTranslationMatrix('z', M_PI);
+            break;
+        case 5:
+            theta_ = M_PI * 2.0 / 3.0;
+            tanTheta_ = std::tan((M_PI - theta_) / 2.0);
+            translationCamToBody_ = (cv::Mat_<float>(3, 1) << -0.0505, 0, -0.0055);
+            rotationCamToBody_ = getTranslationMatrix('x', M_PI) * getTranslationMatrix('z', -M_PI / 2);
+            break;
+        default:
+            break;
+        }
+    }
+
+    cv::Mat getTranslationMatrix(char axis, float angle)
+    {
         cv::Mat mat(4, 4, CV_32FC1, cv::Scalar(0));
 
-        if (axis == 'x') {
+        if (axis == 'x')
+        {
             mat.at<float>(0, 0) = 1.0;
             mat.at<float>(1, 1) = std::cos(angle);
             mat.at<float>(1, 2) = -std::sin(angle);
             mat.at<float>(2, 1) = std::sin(angle);
             mat.at<float>(2, 2) = std::cos(angle);
             mat.at<float>(3, 3) = 1.0;
-        } else if (axis == 'y') {
+        }
+        else if (axis == 'y')
+        {
             mat.at<float>(0, 0) = std::cos(angle);
             mat.at<float>(0, 2) = std::sin(angle);
             mat.at<float>(1, 1) = 1.0;
             mat.at<float>(2, 0) = -std::sin(angle);
             mat.at<float>(2, 2) = std::cos(angle);
             mat.at<float>(3, 3) = 1.0;
-        } else if (axis == 'z') {
+        }
+        else if (axis == 'z')
+        {
             mat.at<float>(0, 0) = std::cos(angle);
             mat.at<float>(0, 1) = -std::sin(angle);
             mat.at<float>(1, 0) = std::sin(angle);
@@ -710,8 +782,8 @@ private:
         return mat;
     }
 
-    UnitreeCamera cam_;
-    ros::NodeHandle nh_;
+    UnitreeCamera *cam_;
+    ros::NodeHandle nodeHandle;
 
     ros::Publisher topic_publisher_;
     ros::Publisher range_publisher_;
@@ -720,7 +792,7 @@ private:
     std::string pointCloudName;
     std::string rangeName;
 
-    bool killSignalFlag = false;
+    // bool killSignalFlag = false;
     double offsetTime_;
 
     int camPosNum;
@@ -731,17 +803,32 @@ private:
     cv::Mat rotationCamToBody_;
 };
 
-bool killSignalFlag = false;
+// bool killSignalFlag = false;
 
-void ctrl_c_handler(int s) {
-    killSignalFlag = true;
-}
+// void ctrl_c_handler(int s)
+// {
+//     killSignalFlag = true;
+// }
 
-int main(int argc, char** argv) {
-    std::signal(SIGINT, ctrl_c_handler);
+int main(int argc, char **argv)
+{
+    // std::signal(SIGINT, ctrl_c_handler);
+    std::string node_name;
+    if (argc < 3)
+    {
+        printf("Tips: if use rosrun, execute: rosrun pkgname node_executable_bin node_name _params:=value ...\n");
+        node_name = std::string("unitree_camera_node");
+    }
+    else
+    {
+        node_name = std::string(argv[2]);
+    }
+    double offsetTime = static_cast<double>(std::atof(argv[3]));
+    fprintf(stderr, "Initializing ROS");
     ros::init(argc, argv, node_name);
+    fprintf(stderr, "ROS inited");
 
-    UnitreeCameraNode node(argc, argv);
+    DepthPublisher node(offsetTime);
     node.run();
 
     return 0;

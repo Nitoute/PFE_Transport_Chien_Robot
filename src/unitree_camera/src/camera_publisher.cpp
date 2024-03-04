@@ -19,22 +19,22 @@ public:
     ImgPublisher()
     {
         // Parameters
-        nh_.param("fps", fps_, 30);
+        nodeHandle.param("fps", fps_, 30);
         interval_ = 1.0 / static_cast<double>(fps_);
         interval_ms_ = static_cast<std::chrono::milliseconds>(static_cast<int>(interval_ * 1000.0));
         int device_node_, frame_height_, frame_width_;
         bool use_yaml_;
         std::string yaml_path_;
-        nh_.param("device_node", device_node_, 0);
-        nh_.param("frame_width", frame_width_, 1856);
-        nh_.param("frame_height", frame_height_, 800);
+        nodeHandle.param("device_node", device_node_, 0);
+        nodeHandle.param("frame_width", frame_width_, 1856);
+        nodeHandle.param("frame_height", frame_height_, 800);
 
-        nh_.param("use_yaml", use_yaml_, false);
-        nh_.param("yaml_path", yaml_path_, std::string(""));
+        nodeHandle.param("use_yaml", use_yaml_, false);
+        nodeHandle.param("yaml_path", yaml_path_, std::string(""));
 
-        nh_.param("enable_raw", enable_raw_, false);
-        nh_.param("enable_rect", enable_rect_, true);
-        nh_.param("enable_depth", enable_depth_, false);
+        nodeHandle.param("enable_raw", enable_raw_, false);
+        nodeHandle.param("enable_rect", enable_rect_, true);
+        nodeHandle.param("enable_depth", enable_depth_, false);
 
         if (use_yaml_ && (yaml_path_ == ""))
         {
@@ -44,7 +44,7 @@ public:
         }
 
         // Timers
-        timer_ = nh_.createTimer(ros::Duration(interval_), boost::bind(&ImgPublisher::timer_callback, this, _1));
+        timer_ = nodeHandle.createTimer(ros::Duration(interval_), boost::bind(&ImgPublisher::timer_callback, this, _1));
 
         frame_size_ = cv::Size{frame_width_, frame_height_};
 
@@ -92,7 +92,7 @@ public:
 
         if (enable_depth_)
         {
-            pub_depth_ = nh_.advertise<sensor_msgs::Image>("~/image_depth", 10);
+            pub_depth_ = nodeHandle.advertise<sensor_msgs::Image>("~/image_depth", 10);
         }
         ROS_INFO_STREAM("Device Position Number: " << cam_->getPosNumber());
 
@@ -117,8 +117,8 @@ public:
     }
 
 private:
-    ros::NodeHandle nh_;
-    image_transport::ImageTransport it_{nh_};
+    ros::NodeHandle nodeHandle;
+    image_transport::ImageTransport it_{nodeHandle};
     ros::Timer timer_;
     image_transport::CameraPublisher pub_raw_left_;
     image_transport::CameraPublisher pub_raw_right_;
