@@ -44,7 +44,8 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-xacro \
     ros-${ROS_DISTRO}-cv-bridge \
     ros-${ROS_DISTRO}-image-transport \
-    ros-${ROS_DISTRO}-rtabmap-ros\
+    ros-${ROS_DISTRO}-rtabmap-ros \
+    gdb \
     && apt-get autoremove -y
 
 WORKDIR ${WS}

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(unitree_camera)
 
 set(PUB_NAME "camera_publisher")
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
+SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -g -O0")
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
 
