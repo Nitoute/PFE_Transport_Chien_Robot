@@ -69,7 +69,6 @@ private:
         int deviceNode;
         nodeHandle.param<int>("device_node", deviceNode, 0);
 
-
         std::string cameraConfig;
         bool has_config = false;
 
@@ -86,13 +85,22 @@ private:
 
         std::cout << "Camera Config File:" << cameraConfig << std::endl;
 
-        fprintf(stderr, "Opening camera");
+        std::cerr << "Opening camera" << std::endl;
+        std::cerr << "Has config : " << has_config << std::endl;
+        has_config = false;
         if (has_config)
+        {
+            std::cerr << "Using cameraConfig" << std::endl;
             cam_ = new UnitreeCamera(cameraConfig);
+        }
         else
+        {
+            std::cerr << "Using deviceNode" << std::endl;
             cam_ = new UnitreeCamera(deviceNode);
+        }
 
-        if (!cam_->isOpened()) {
+        if (!cam_->isOpened())
+        {
             fprintf(stderr, "Failed to open camera");
             return;
         }

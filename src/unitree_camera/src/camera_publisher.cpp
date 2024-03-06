@@ -25,16 +25,18 @@ public:
         int device_node_, frame_height_, frame_width_;
         bool use_yaml_;
         std::string yaml_path_;
-        nodeHandle.param("device_node", device_node_, 0);
-        nodeHandle.param("frame_width", frame_width_, 1856);
-        nodeHandle.param("frame_height", frame_height_, 800);
+        nodeHandle.param<int>("device_node", device_node_, 0);
+        nodeHandle.param<int>("frame_width", frame_width_, 1856);
+        nodeHandle.param<int>("frame_height", frame_height_, 800);
 
-        nodeHandle.param("use_yaml", use_yaml_, false);
-        nodeHandle.param("yaml_path", yaml_path_, std::string(""));
+        nodeHandle.param<bool>("use_yaml", use_yaml_, false);
+        nodeHandle.param<std::string>("yaml_path", yaml_path_, "");
 
-        nodeHandle.param("enable_raw", enable_raw_, false);
-        nodeHandle.param("enable_rect", enable_rect_, true);
-        nodeHandle.param("enable_depth", enable_depth_, false);
+        nodeHandle.param<bool>("enable_raw", enable_raw_, false);
+        nodeHandle.param<bool>("enable_rect", enable_rect_, true);
+        nodeHandle.param<bool>("enable_depth", enable_depth_, false);
+        fprintf(stderr, "Using yaml config : %d\n", use_yaml_);
+        fprintf(stderr, "Yaml path : %s\n", yaml_path_);
 
         if (use_yaml_ && (yaml_path_ == ""))
         {

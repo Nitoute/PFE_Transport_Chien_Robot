@@ -1,9 +1,16 @@
+# [submodule "opencv"]
+# 	path = opencv
+# 	url = git@github.com:opencv/opencv.git
 [submodule "src/unitree_ros"]
 	path = src/unitree_ros
-	url = git@github.com:unitreerobotics/unitree_ros.git
+	url = ssh://git@github.com:unitreerobotics/unitree_ros.git
 [submodule "src/unitree_guide"]
 	path = src/unitree_guide
-	url = git@github.com:Soralsei/unitree_guide.git
+	url = ssh://git@github.com:Soralsei/unitree_guide.git
 [submodule "src/UnitreecameraSDK"]
 	path = src/UnitreecameraSDK
-	url = git@github.com:Soralsei/UnitreecameraSDK.git
+	url = ssh://git@github.com:Soralsei/UnitreecameraSDK.git
+[submodule "opencv"]
+	path = opencv
+	url = git@github.com:opencv/opencv.git
+	branch = 4.x

@@ -46,6 +46,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-image-transport \
     ros-${ROS_DISTRO}-rtabmap-ros \
     gdb \
+    openssh-client \
     && apt-get autoremove -y
 
 WORKDIR ${WS}
