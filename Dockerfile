@@ -6,8 +6,6 @@ ENV ROS_MASTER_URI=http://192.168.12.1:11311
 ARG WS=/opt/ros/PFE_Transport_Chien_Robot
 WORKDIR /src/
 ADD ./opencv ./opencv
-# ADD ./lcm-1.4.0.zip ./
-# ADD ./${scripts}/install-lcm.sh ./${scripts}/install-opencv.sh ${WS}/${scripts}/
 ADD ./${scripts}/install-opencv.sh ${WS}/${scripts}/
 RUN ${WS}/${scripts}/install-opencv.sh
 
@@ -30,11 +28,6 @@ RUN --mount=type=cache,target=/var/cache/apt \
     build-essential \
     libudev-dev\
     liblcm-dev\
-    # python3-catkin-pkg \
-    # python3-rosdep \
-    # python3-rosinstall \
-    # python3-vcstools &&\
-    # apt-get install -y \
     ros-${ROS_DISTRO}-controller-interface \
     ros-${ROS_DISTRO}-gazebo-ros-control \
     ros-${ROS_DISTRO}-joint-state-controller \
@@ -58,12 +51,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     && apt-get autoremove -y
 
 WORKDIR ${WS}
-# ADD ZED_SDK_Ubuntu22_cuda12.1_v4.0.8.zstd.run .
 ADD src ./src/
-# RUN cd ${WS}/ \
-#     && rosdep update --rosdistro melodic \
-#     && rosdep install --from-paths src --ignore-src -r -y \
-#     && apt-get autoremove -y
 RUN a/bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make"
 
 # FROM ros:melodic-ros-core
