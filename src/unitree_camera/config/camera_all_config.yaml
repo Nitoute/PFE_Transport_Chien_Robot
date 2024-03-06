@@ -35,7 +35,7 @@ RectifyFrameSize: !!opencv-matrix
    rows: 1
    cols: 2
    dt: d
-   data: [ 232., 200. ]
+   data: [ 464., 400. ]
 FrameRate: !!opencv-matrix
    rows: 1
    cols: 1

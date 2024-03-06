@@ -45,17 +45,26 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-cv-bridge \
     ros-${ROS_DISTRO}-image-transport \
     ros-${ROS_DISTRO}-rtabmap-ros \
-    gdb \
-    openssh-client \
+    ros-${ROS_DISTRO}-nodelet \
+    ros-${ROS_DISTRO}-tf2-ros \
+    ros-${ROS_DISTRO}-tf2-geometry-msgs \
+    ros-${ROS_DISTRO}-message-generation \
+    ros-${ROS_DISTRO}-diagnostic-updater \
+    ros-${ROS_DISTRO}-dynamic-reconfigure \
+    ros-${ROS_DISTRO}-message-filters \
+    ros-${ROS_DISTRO}-stereo-msgs \
+    # gdb \
+    # openssh-client \
     && apt-get autoremove -y
 
 WORKDIR ${WS}
+# ADD ZED_SDK_Ubuntu22_cuda12.1_v4.0.8.zstd.run .
 ADD src ./src/
 # RUN cd ${WS}/ \
 #     && rosdep update --rosdistro melodic \
 #     && rosdep install --from-paths src --ignore-src -r -y \
 #     && apt-get autoremove -y
-RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make"
+RUN a/bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make"
 
 # FROM ros:melodic-ros-core
 ENV WS=/opt/ros/PFE_Transport_Chien_Robot
