@@ -10,19 +10,20 @@
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
 #include "UnitreeCameraSDK.hpp"
-
-using namespace std::chrono_literals;
+#include "depth_publisher.hpp"
 
 class ImgPublisher
 {
 public:
     ImgPublisher()
     {
+        
         // Parameters
         nodeHandle.param("fps", fps_, 30);
         interval_ = 1.0 / static_cast<double>(fps_);
         interval_ms_ = static_cast<std::chrono::milliseconds>(static_cast<int>(interval_ * 1000.0));
         int device_node_, frame_height_, frame_width_;
+        double offsetTime;
         bool use_yaml_;
         std::string yaml_path_;
         nodeHandle.param<int>("device_node", device_node_, 0);
@@ -35,8 +36,12 @@ public:
         nodeHandle.param<bool>("enable_raw", enable_raw_, false);
         nodeHandle.param<bool>("enable_rect", enable_rect_, true);
         nodeHandle.param<bool>("enable_depth", enable_depth_, false);
-        fprintf(stderr, "Using yaml config : %d\n", use_yaml_);
-        fprintf(stderr, "Yaml path : %s\n", yaml_path_);
+        nodeHandle.param<bool>("enable_point_cloud", enable_point_cloud_, false);
+
+        nodeHandle.param<double>("offset_time", offsetTime, 0.f);
+
+        // fprintf(stderr, "Using yaml config : %d\n", use_yaml_);
+        // fprintf(stderr, "Yaml path : %s\n", yaml_path_);
 
         if (use_yaml_ && (yaml_path_ == ""))
         {
@@ -53,15 +58,15 @@ public:
         // Initialize camera
         if (!use_yaml_)
         {
-            cam_ = std::make_unique<UnitreeCamera>(device_node_);
+            cam = std::make_shared<UnitreeCamera>(device_node_);
         }
         else
         {
-            cam_ = std::make_unique<UnitreeCamera>(yaml_path_);
+            cam = std::make_shared<UnitreeCamera>(yaml_path_);
         }
 
         // Throw error and exit if camera fails to open
-        if (!cam_->isOpened())
+        if (!cam->isOpened())
         {
             std::string msg = "Camera failed to open on startup.";
             ROS_ERROR_STREAM(msg);
@@ -71,8 +76,8 @@ public:
         // Set frame size and fps
         if (!use_yaml_)
         {
-            cam_->setRawFrameSize(frame_size_);
-            cam_->setRawFrameRate(fps_);
+            cam->setRawFrameSize(frame_size_);
+            cam->setRawFrameRate(fps_);
         }
 
         if (enable_raw_)
@@ -85,7 +90,7 @@ public:
         {
             if (!use_yaml_)
             {
-                cam_->setRectFrameSize(cv::Size(frame_size_.width >> 2, frame_size_.height >> 1));
+                cam->setRectFrameSize(cv::Size(frame_size_.width >> 2, frame_size_.height >> 1));
             }
 
             pub_rect_left_ = it_.advertiseCamera("~/image_rect/left", 10);
@@ -96,13 +101,19 @@ public:
         {
             pub_depth_ = nodeHandle.advertise<sensor_msgs::Image>("~/image_depth", 10);
         }
-        ROS_INFO_STREAM("Device Position Number: " << cam_->getPosNumber());
+
+        if (enable_point_cloud_) {
+            point_cloud_pub = new DepthPublisher(offsetTime, cam);
+        }
+
+        ROS_INFO_STREAM("Device Position Number: " << cam->getPosNumber());
+
 
         // Start camera capturing
-        cam_->startCapture();
+        cam->startCapture();
         if (enable_depth_ || enable_point_cloud_)
         {
-            cam_->startStereoCompute();
+            cam->startStereoCompute();
         }
 
         ROS_INFO_STREAM("img_publisher node started");
@@ -113,12 +124,14 @@ public:
     {
         if (enable_depth_ || enable_point_cloud_)
         {
-            cam_->stopStereoCompute();
+            cam->stopStereoCompute();
         }
-        cam_->stopCapture();
+        cam->stopCapture();
     }
 
 private:
+    DepthPublisher *point_cloud_pub;
+
     ros::NodeHandle nodeHandle;
     image_transport::ImageTransport it_{nodeHandle};
     ros::Timer timer_;
@@ -138,12 +151,12 @@ private:
     const std::string depth_encoding_ = "8UC3";
     sensor_msgs::CameraInfo camera_info_; // unsure how to get this from UnitreeCameraSDK
 
-    std::unique_ptr<UnitreeCamera> cam_;
+    std::shared_ptr<UnitreeCamera> cam;
 
     void timer_callback(const ros::TimerEvent &)
     {
         // Throw error and exit if camera is no longer open
-        if (!cam_->isOpened())
+        if (!cam->isOpened())
         {
             std::string msg = "Camera closed unexpectedly.";
             ROS_ERROR_STREAM(msg);
@@ -162,7 +175,7 @@ private:
             cv::Mat raw_frame;
 
             // Process/publish raw frame if it can be obtained
-            if (cam_->getRawFrame(raw_frame, t))
+            if (cam->getRawFrame(raw_frame, t))
             {
                 cv::Mat raw_left, raw_right;
 
@@ -188,7 +201,7 @@ private:
         {
             cv::Mat rect_left, rect_right;
 
-            if (cam_->getRectStereoFrame(rect_left, rect_right))
+            if (cam->getRectStereoFrame(rect_left, rect_right))
             {
                 // flip frames
                 cv::flip(rect_left, rect_left, -1);
@@ -210,7 +223,7 @@ private:
         {
             cv::Mat depth;
 
-            if (cam_->getDepthFrame(depth, true, t))
+            if (cam->getDepthFrame(depth, true, t))
             {
                 if (!depth.empty())
                 {
@@ -220,6 +233,10 @@ private:
                     pub_depth_.publish(msg_depth);
                 }
             }
+        }
+
+        if (enable_point_cloud_) {
+            point_cloud_pub->runOnce();
         }
     }
 };

@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(unitree_camera)
 
 set(PUB_NAME "camera_publisher")
+set(DEPTH_NODE "depth_publisher")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -g -O0")
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -38,7 +39,7 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-    include
+    include/
     ${catkin_INCLUDE_DIRS}
     ${Boost_INCLUDE_DIR}
 )
@@ -52,22 +53,22 @@ add_library(${PROJECT_NAME}
 )
 
 ## Specify libraries to link a library or executable target against
-add_executable(${PUB_NAME} src/${PUB_NAME}.cpp)
+add_executable(${PUB_NAME} src/${PUB_NAME}.cpp src/${DEPTH_NODE}.cpp)
 add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(${PUB_NAME}
   ${catkin_LIBRARIES}
   UnitreeCameraSDK
 )
 
-add_executable(point_cloud_node src/point_cloud_node.cpp)
-add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(point_cloud_node
-  ${catkin_LIBRARIES}
-  UnitreeCameraSDK
-)
+# add_executable(${DEPTH_NODE} src/${DEPTH_NODE}.cpp)
+# add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
+# target_link_libraries(${DEPTH_NODE}
+#   ${catkin_LIBRARIES}
+#   UnitreeCameraSDK
+# )
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
-# install(TARGETS ${PUB_NAME} point_cloud_node
-#   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
+install(TARGETS ${PUB_NAME}
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
