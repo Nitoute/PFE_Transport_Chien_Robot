@@ -1,6 +1,6 @@
 # FROM tiryoh/ros-desktop-vnc:melodic
 # ENV ROS_DISTRO=melodic
-FROM ros:melodic-ros-base as builder
+FROM arm64v8/ros:melodic-ros-base as builder
 ENV scripts=scripts
 ENV ROS_MASTER_URI=http://192.168.12.1:11311
 ARG WS=/opt/ros/PFE_Transport_Chien_Robot
@@ -53,7 +53,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
 
 WORKDIR ${WS}
 ADD src ./src/
-RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make"
+RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make install -DCMAKE_INSTALL_PREFIX=/home/unitree/custom_ws/install"
 
 # FROM ros:melodic-ros-core
 ENV WS=/opt/ros/PFE_Transport_Chien_Robot

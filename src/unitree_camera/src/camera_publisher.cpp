@@ -15,7 +15,7 @@
 class ImgPublisher
 {
 public:
-    ImgPublisher()
+    ImgPublisher() : nodeHandle("~")
     {
         
         // Parameters
@@ -38,10 +38,7 @@ public:
         nodeHandle.param<bool>("enable_depth", enable_depth_, false);
         nodeHandle.param<bool>("enable_point_cloud", enable_point_cloud_, false);
 
-        nodeHandle.param<double>("offset_time", offsetTime, 0.f);
-
-        // fprintf(stderr, "Using yaml config : %d\n", use_yaml_);
-        // fprintf(stderr, "Yaml path : %s\n", yaml_path_);
+        nodeHandle.param<double>("offset_time", offsetTime, 0.0);
 
         if (use_yaml_ && (yaml_path_ == ""))
         {
@@ -243,7 +240,7 @@ private:
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "img_publisher");
+    ros::init(argc, argv, "camera_publisher");
     ImgPublisher img_publisher;
     ros::spin();
     return 0;
