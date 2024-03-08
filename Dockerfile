@@ -53,11 +53,13 @@ RUN --mount=type=cache,target=/var/cache/apt \
 
 WORKDIR ${WS}
 ADD src ./src/
-RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make install -DCMAKE_INSTALL_PREFIX=/home/unitree/custom_ws/install"
+ENV INSTALL_PATH=/home/unitree/custom_ws/install
+RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make install -DCMAKE_INSTALL_PREFIX=${INSTALL_PATH}"
 
-# FROM ros:melodic-ros-core
+# FROM arm64v8/ros:melodic-ros-base
+# ARG INSTALL_PATH=/home/unitree/custom_ws/install
+# COPY --from=builder ${INSTALL_PATH} ${INSTALL_PATH}
 ENV WS=/opt/ros/PFE_Transport_Chien_Robot
-# COPY --from=builder ${WS} /opt/ros/PFE_Transport_Chien_Robot
 
 RUN sed --in-place --expression \
       '$isource "${WS}/devel/setup.bash"' \

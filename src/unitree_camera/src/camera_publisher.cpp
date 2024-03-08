@@ -100,7 +100,7 @@ public:
         }
 
         if (enable_point_cloud_) {
-            point_cloud_pub = new DepthPublisher(offsetTime, cam);
+            point_cloud_pub = new DepthPublisher(offsetTime, cam, nodeHandle);
         }
 
         ROS_INFO_STREAM("Device Position Number: " << cam->getPosNumber());
@@ -119,6 +119,7 @@ public:
     // Stop capture when node is destroyed
     ~ImgPublisher()
     {
+        delete point_cloud_pub;
         if (enable_depth_ || enable_point_cloud_)
         {
             cam->stopStereoCompute();
