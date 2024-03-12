@@ -1,4 +1,4 @@
-FROM tiryoh/tiryoh/ros-desktop-vnc:latest
+FROM ros:humble-ros-base
 
 # install bootstrap tools
 RUN apt-get update && apt-get install --no-install-recommends -y \
@@ -10,17 +10,17 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 
 # bootstrap rosdep
 RUN rosdep init && \
-  rosdep update --rosdistro $ROS_DISTRO
+  rosdep update --rosdistro $ROS_DISTRO && rosdep install --from-paths src --ignore-src -r -y
 
 # install ros packages
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    ros-noetic-ros-base=1.5.0-1* \
-    ros-melodic-controller-interface \
-    ros-melodic-gazebo-ros-control \
-    ros-melodic-joint-state-controller \
-    ros-melodic-effort-controllers \
-    ros-melodic-joint-trajectory-controller \
-    && rm -rf /var/lib/apt/lists/*
+# RUN apt-get update && apt-get install -y --no-install-recommends \
+#     ros-noetic-ros-base=1.5.0-1* \
+#     ros-melodic-controller-interface \
+#     ros-melodic-gazebo-ros-control \
+#     ros-melodic-joint-state-controller \
+#     ros-melodic-effort-controllers \
+#     ros-melodic-joint-trajectory-controller \
+#     && rm -rf /var/lib/apt/lists/*
 
 # FROM ros:humble
 # RUN apt-get update && apt-get install -y \
