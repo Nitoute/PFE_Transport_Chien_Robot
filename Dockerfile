@@ -1,10 +1,21 @@
 # FROM tiryoh/ros-desktop-vnc:melodic
 # ENV ROS_DISTRO=melodic
-FROM arm64v8/ros:melodic-ros-base as builder
+# FROM arm64v8/ros:melodic-ros-base as builder
+FROM ros:melodic-ros-base as builder
 ENV scripts=scripts
 ENV ROS_MASTER_URI=http://192.168.12.1:11311
 ARG WS=/opt/ros/PFE_Transport_Chien_Robot
 WORKDIR /src/
+
+# Compile and install opencv
+RUN --mount=type=cache,target=/var/cache/apt \
+    apt-get update \
+    && apt-get install -y --no-install-recommends libgtk2.0-dev libgtk-3-dev \
+    libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev libgstreamer-plugins-good1.0-dev \
+    gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
+    gstreamer1.0-tools gstreamer1.0-libav \
+    gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio
+
 ADD ./opencv ./opencv
 ADD ./${scripts}/install-opencv.sh ${WS}/${scripts}/
 RUN ${WS}/${scripts}/install-opencv.sh
@@ -21,11 +32,7 @@ EOF
 RUN --mount=type=cache,target=/var/cache/apt \
     apt-get update \
     && apt-get install --no-install-recommends -y \
-    # apt-utils libgtk2.0-dev libgtk-3-dev \
-    # libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libgstreamer-plugins-bad1.0-dev libgstreamer-plugins-good1.0-dev \
-    # gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly \
-    # gstreamer1.0-tools gstreamer1.0-libav \
-    # gstreamer1.0-x gstreamer1.0-alsa gstreamer1.0-gl gstreamer1.0-gtk3 gstreamer1.0-qt5 gstreamer1.0-pulseaudio \
+    # apt-utils \
     build-essential \
     libudev-dev\
     liblcm-dev\
@@ -47,7 +54,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-dynamic-reconfigure \
     ros-${ROS_DISTRO}-message-filters \
     ros-${ROS_DISTRO}-stereo-msgs \
-    # gdb \
+    gdb \
     openssh-client \
     && apt-get autoremove -y
 
@@ -60,7 +67,10 @@ RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make instal
 # ARG INSTALL_PATH=/home/unitree/custom_ws/install
 # COPY --from=builder ${INSTALL_PATH} ${INSTALL_PATH}
 ENV WS=/opt/ros/PFE_Transport_Chien_Robot
+ENV ROS_MASTER_URI=http://localhost:11311
 
 RUN sed --in-place --expression \
-      '$isource "${WS}/devel/setup.bash"' \
-      /ros_entrypoint.sh
+    '$isource "${WS}/devel/setup.bash"' \
+    /ros_entrypoint.sh
+
+ADD UnitreecameraSDK ./UnitreecameraSDK

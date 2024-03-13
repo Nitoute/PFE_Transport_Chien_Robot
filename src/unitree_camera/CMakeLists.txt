@@ -5,7 +5,7 @@ set(PUB_NAME "camera_publisher")
 set(DEPTH_NODE "depth_publisher")
 SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread -g -O0")
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+add_compile_options(-std=c++11)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -26,9 +26,9 @@ find_package(Boost REQUIRED COMPONENTS system)
 find_package(OpenCV 4 REQUIRED)
 
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES unitree_camera
-#  CATKIN_DEPENDS other_catkin_pkg
+  INCLUDE_DIRS include
+  LIBRARIES unitree_camera
+  CATKIN_DEPENDS  UnitreeCameraSDK
 #  DEPENDS system_lib
 )
 
@@ -39,11 +39,9 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-    include/
-    ${catkin_INCLUDE_DIRS}
-    ${Boost_INCLUDE_DIR}
-)
-include_directories(SYSTEM
+  include/
+  ${catkin_INCLUDE_DIRS}
+  ${Boost_INCLUDE_DIR}
   ${OpenCV_INCLUDE_DIRS}
 )
 

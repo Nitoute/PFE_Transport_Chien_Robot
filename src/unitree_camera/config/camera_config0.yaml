@@ -41,13 +41,13 @@ FrameSize: !!opencv-matrix
    rows: 1
    cols: 2
    dt: d
-   data: [1856.,800.]
+   data: [928.,400.] 
 #   [232.,200.] [464.,400.] [928.,800.] 
 RectifyFrameSize: !!opencv-matrix
    rows: 1
    cols: 2
    dt: d
-   data: [464.,400.]
+   data: [464.,400.] 
 #FrameRate
 FrameRate: !!opencv-matrix
    rows: 1
