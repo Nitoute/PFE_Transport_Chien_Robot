@@ -19,17 +19,12 @@
 
 #include "depth_publisher.hpp"
 
-DepthPublisher::DepthPublisher(double offsetTime, UnitreeCamera *cam_, ros::NodeHandle nodeHandle_) : nodeHandle(nodeHandle_), offsetTime_(offsetTime), cam(cam_)
+DepthPublisher::DepthPublisher(double offsetTime, std::shared_ptr<UnitreeCamera> cam_, ros::NodeHandle nodeHandle_) : nodeHandle(nodeHandle_), offsetTime_(offsetTime), cam(cam_)
 {
     init();
 }
 
-DepthPublisher::~DepthPublisher()
-{
-    cleanup();
-}
-
-void DepthPublisher::runOnce()
+void DepthPublisher::publish()
 {
     std::chrono::microseconds timeStamp;
     std::vector<PCLType> curPCL;
@@ -57,7 +52,7 @@ void DepthPublisher::run()
 {
     while (ros::ok() && cam->isOpened())
     {
-        runOnce();
+        publish();
         ros::spinOnce();
     }
 }
@@ -72,10 +67,6 @@ void DepthPublisher::init()
     initCamera();
 }
 
-void DepthPublisher::cleanup()
-{
-    cam->stopStereoCompute();
-}
 
 void DepthPublisher::processPointCloud(const std::vector<PCLType> &curPCL, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
 {

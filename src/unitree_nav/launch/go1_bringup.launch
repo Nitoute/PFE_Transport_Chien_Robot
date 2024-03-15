@@ -1,0 +1,10 @@
+<launch>
+    <arg name="keyboard_control" default="false"
+        doc="Whether to launch keyboard control for the robot or not." />
+    <include file="$(find unitree_legged_real)/launch/base_controller.launch"
+        unless="$(arg keyboard_control)" />
+    <include file="$(find unitree_republisher)/launch/imu_odom.launch">
+        <arg name="keyboard_control" value="$(arg keyboard_control)" />
+        <arg name="use_rviz" value="false" />
+    </include>
+</launch>

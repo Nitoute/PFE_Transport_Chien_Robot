@@ -74,4 +74,6 @@ RUN sed --in-place --expression \
     '$isource "${WS}/devel/setup.bash"' \
     /ros_entrypoint.sh
 
+# ADD ${scripts}/setup.sh ${scripts}/setup.sh
+
 # ADD UnitreecameraSDK ./UnitreecameraSDK

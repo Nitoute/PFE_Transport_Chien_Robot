@@ -1,12 +1,10 @@
 <launch>
     <arg name="keyboard_control" default="false" doc="Whether to launch keyboard control for the robot or not."/>
-    <arg name="rviz" default="false" doc="Start visualisation with rviz"/>
+    <arg name="use_rviz" default="false" doc="Start visualisation with Rviz"/>
 
     <node pkg="unitree_republisher" type="imu_odom_pub" name="imu_odom"/>
+
     <include file="$(find unitree_legged_real)/launch/keyboard_control.launch" if="$(arg keyboard_control)"/>
-    <group unless="$(arg keyboard_control)">
-        <include file="$(find unitree_legged_real)/launch/real.launch"/>
-        <node pkg="unitree_legged_real" type="twist_sub" name="base_controller"/>
-    </group>
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find unitree_republisher)/config/odom.rviz"/>
+    
+    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find unitree_republisher)/config/odom.rviz" if="$(arg use_rviz)"/>
 </launch>
