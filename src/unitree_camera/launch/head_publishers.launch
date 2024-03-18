@@ -15,7 +15,7 @@
     <arg name="front.enable_depth" default="false" doc="Enable publishing of depth map." />
     <arg name="front.enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
-    <include file="$(find unitree_camera/launch/camera_publisher.launch)"
+    <include file="$(find unitree_camera)/launch/camera_publisher.launch)"
         if="$(arg front.enable_cam)">
         <arg name="fps" value="$(arg front.fps)" />
         <arg name="device_node" value="1" />
@@ -43,7 +43,7 @@
     <arg name="chin.enable_depth" default="false" doc="Enable publishing of depth map." />
     <arg name="chin.enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
-    <include file="$(find unitree_camera/launch/camera_publisher.launch)"
+    <include file="$(find unitree_camera)/launch/camera_publisher.launch)"
         if="$(arg chin.enable_cam)">
         <arg name="fps" value="$(arg chin.fps)" />
         <arg name="device_node" value="0" />
