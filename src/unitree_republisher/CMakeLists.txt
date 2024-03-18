@@ -65,8 +65,6 @@ install(TARGETS imu_odom_pub
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-
-
 install(DIRECTORY launch/ config/
   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/)
 ## Mark other files for installation (e.g. launch and bag files, etc.)
