@@ -8,3 +8,6 @@ log
 *.md
 *.txt
 src/unitree_guide
+src/unitree_ros/unitree_controller
+src/unitree_ros/unitree_gazebo
+src/unitree_ros/unitree_legged_control
