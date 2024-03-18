@@ -1,0 +1,61 @@
+<launch>
+    <!-- left camera -->
+    <arg name="left.enable_cam" default="true" doc="Enable the left camera of the GO1" />
+
+    <arg name="left.fps" default="30.0" doc="The framerate of the left camera." />
+
+    <arg name="left.frame_width" default="1856" doc="Captured frame width" />
+    <arg name="left.frame_height" default="800" doc="Captured frame height" />
+
+    <arg name="offset_time" default="0.0"
+        doc="Time offset between ROS master and executing board" />
+
+    <arg name="left.enable_raw" default="true" doc="Enable publishing of raw frames." />
+    <arg name="left.enable_rect" default="false" doc="Enable publishing of rectified frames." />
+    <arg name="left.enable_depth" default="false" doc="Enable publishing of depth map." />
+    <arg name="left.enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
+
+    <include file="$(find unitree_camera/launch/camera_publisher.launch)"
+        if="$(arg left.enable_cam)">
+        <arg name="fps" value="$(arg left.fps)" />
+        <arg name="device_node" value="1" />
+
+        <arg name="frame_width" value="$(arg left.frame_width)" />
+        <arg name="frame_height" value="$(arg left.frame_height)" />
+
+        <arg name="offset_time" value="$(arg offset_time)" />
+
+        <arg name="enable_raw" value="$(arg left.enable_raw)" />
+        <arg name="enable_rect" value="$(arg left.enable_rect)" />
+        <arg name="enable_depth" value="$(arg left.enable_depth)" />
+        <arg name="enable_point_cloud" value="$(arg left.enable_point_cloud)" />
+    </include>
+
+    <!-- right camera -->
+    <arg name="right.enable_cam" default="false" doc="Enable the right camera of the GO1" />
+    <arg name="right.fps" default="30.0" doc="The framerate of the right camera." />
+
+    <arg name="right.frame_width" default="1856" doc="Captured frame width" />
+    <arg name="right.frame_height" default="800" doc="Captured frame height" />
+
+    <arg name="right.enable_raw" default="true" doc="Enable publishing of raw frames." />
+    <arg name="right.enable_rect" default="false" doc="Enable publishing of rectified frames." />
+    <arg name="right.enable_depth" default="false" doc="Enable publishing of depth map." />
+    <arg name="right.enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
+
+    <include file="$(find unitree_camera/launch/camera_publisher.launch)"
+        if="$(arg right.enable_cam)">
+        <arg name="fps" value="$(arg right.fps)" />
+        <arg name="device_node" value="0" />
+
+        <arg name="frame_width" value="$(arg right.frame_width)" />
+        <arg name="frame_height" value="$(arg right.frame_height)" />
+
+        <arg name="offset_time" value="$(arg offset_time)" />
+
+        <arg name="enable_raw" value="$(arg right.enable_raw)" />
+        <arg name="enable_rect" value="$(arg right.enable_rect)" />
+        <arg name="enable_depth" value="$(arg right.enable_depth)" />
+        <arg name="enable_point_cloud" value="$(arg right.enable_point_cloud)" />
+    </include>
+</launch>

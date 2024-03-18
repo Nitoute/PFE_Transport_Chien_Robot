@@ -121,7 +121,7 @@ private:
 
         header.seq = this->count++;
         header.stamp = current_time;
-        header.frame_id = "camera_face";
+        header.frame_id = "map";
 
         camera_info.header = header;
 

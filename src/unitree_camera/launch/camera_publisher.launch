@@ -1,0 +1,30 @@
+<launch>
+    <arg name="fps" default="30.0" doc="The framerate of the camera." />
+    <arg name="device_node" default="1" doc="Video device id (/dev/video*)" />
+
+    <arg name="frame_width" default="1856" doc="Captured frame width" />
+    <arg name="frame_height" default="800" doc="Captured frame height" />
+
+    <arg name="offset_time" default="0.0" doc="Time offset between ROS master and executing board" />
+
+    <arg name="enable_raw" default="true" doc="Enable publishing of raw frames." />
+    <arg name="enable_rect" default="false" doc="Enable publishing of rectified frames." />
+    <arg name="enable_depth" default="false" doc="Enable publishing of depth map." />
+    <arg name="enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
+
+    <node pkg="unitree_camera" type="camera_publisher" name="camera_publisher" />
+
+    <param name="fps" value="$(arg fps)" />
+    <param name="device_node" value="$(arg device_node)" />
+
+    <param name="frame_width" value="$(arg frame_width)" />
+    <param name="frame_height" value="$(arg frame_height)" />
+
+    <param name="offset_time" value="$(arg offset_time)" />
+
+    <param name="enable_raw" value="$(arg enable_raw)" />
+    <param name="enable_rect" value="$(arg enable_rect)" />
+    <param name="enable_depth" value="$(arg enable_depth)" />
+    <param name="enable_point_cloud" value="$(arg enable_point_cloud)" />
+
+</launch>
