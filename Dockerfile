@@ -54,10 +54,8 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-dynamic-reconfigure \
     ros-${ROS_DISTRO}-message-filters \
     ros-${ROS_DISTRO}-stereo-msgs \
-    gdb \
-    openssh-client \
-    nano \
-    && apt-get autoremove -y
+    gdb valgrind openssh-client nano \
+    && apt-get autoremove -y 
 
 WORKDIR ${WS}
 ADD src ./src/
@@ -68,11 +66,12 @@ RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make instal
 # ARG INSTALL_PATH=/home/unitree/custom_ws/install
 # COPY --from=builder ${INSTALL_PATH} ${INSTALL_PATH}
 ENV WS=/opt/ros/PFE_Transport_Chien_Robot
-# ENV ROS_MASTER_URI=http://localhost:11311
+ENV ROS_MASTER_URI=http://localhost:11311
 
 RUN sed --in-place --expression \
     '$isource "${WS}/devel/setup.bash"' \
     /ros_entrypoint.sh
+
 
 # ADD ${scripts}/setup.sh ${scripts}/setup.sh
 
