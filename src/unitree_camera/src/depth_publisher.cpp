@@ -163,7 +163,7 @@ void DepthPublisher::publishPointCloud(const pcl::PointCloud<pcl::PointXYZRGB>::
 {
     sensor_msgs::PointCloud2 cloud_publish_msg;
     pcl::toROSMsg(*cloud, cloud_publish_msg);
-    cloud_publish_msg.header.frame_id = "trunk";
+    cloud_publish_msg.header.frame_id = frameIdName;
     ros::Time::now();
     cloud_publish_msg.header.stamp = ros::Time(timeStamp.count() / 1000000.0 + offsetTime_);
     topic_publisher_.publish(cloud_publish_msg);
