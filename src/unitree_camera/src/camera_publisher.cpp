@@ -52,8 +52,8 @@ public:
         node_handle.param<bool>("enable_rect", enable_rect, true);
         node_handle.param<bool>("enable_point_cloud", enable_point_cloud, false);
 
-        cam = new UnitreeCamera();
         ROS_INFO_STREAM("Starting camera with device node : " << device_node);
+        cam = new UnitreeCamera(device_node);
 
         if (!cam->isOpened())
         {

@@ -62,9 +62,15 @@ ADD src ./src/
 ENV INSTALL_PATH=/home/unitree/custom_ws/install
 RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make install -DCMAKE_INSTALL_PREFIX=${INSTALL_PATH}"
 
-FROM scratch AS export-stage
-ENV INSTALL_PATH=/home/unitree/custom_ws/install
-COPY --from=builder ${INSTALL_PATH} .
+ENV WS=/opt/ros/PFE_Transport_Chien_Robot
+
+RUN sed --in-place --expression \
+    '$isource "${WS}/devel/setup.bash"' \
+    /ros_entrypoint.sh
+
+# FROM scratch AS export-stage
+# ENV INSTALL_PATH=/home/unitree/custom_ws/install
+# COPY --from=builder ${INSTALL_PATH} .
 # FROM arm64v8/ros:melodic-ros-base
 # ARG INSTALL_PATH=/home/unitree/custom_ws/install
 # COPY --from=builder ${INSTALL_PATH} ${INSTALL_PATH}
@@ -72,5 +78,6 @@ COPY --from=builder ${INSTALL_PATH} .
 # ENV ROS_MASTER_URI=http://localhost:11311
 
 # ADD ${scripts}/setup.sh ${scripts}/setup.sh
+
 
 # ADD UnitreecameraSDK ./UnitreecameraSDK
