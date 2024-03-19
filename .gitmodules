@@ -9,3 +9,6 @@
 	path = src/vision_opencv
 	url = git@github.com:Soralsei/vision_opencv.git
 	branch = melodic
+[submodule "src/unitree_ros_to_real"]
+	path = src/unitree_ros_to_real
+	url = git@github.com:Soralsei/unitree_ros_to_real.git
