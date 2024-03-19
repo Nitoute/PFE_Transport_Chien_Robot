@@ -132,6 +132,7 @@ private:
 
         if (enable_raw)
         {
+            ROS_INFO_STREAM("Reading raw frames");
             if (cam->getRawFrame(frame, time))
             {
                 frame(cv::Rect(0, 0, frame.size().width / 2, frame.size().height)).copyTo(right);
