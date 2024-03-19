@@ -12,7 +12,7 @@
     <arg name="enable_depth" default="false" doc="Enable publishing of depth map." />
     <arg name="enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
-    <node pkg="unitree_camera" type="camera_publisher" name="camera_publisher" />
+    <node pkg="unitree_camera" type="camera_publisher" name="camera_publisher" output="screen" />
 
     <param name="fps" value="$(arg fps)" />
     <param name="device_node" value="$(arg device_node)" />

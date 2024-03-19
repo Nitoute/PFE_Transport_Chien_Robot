@@ -54,14 +54,6 @@ else()
 endif()
 
 
-set(SDKLIBS unitree_camera tstc_V4L2_xu_camera udev systemlog ${OpenCV_LIBS})
-
-if(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "x86_64")
-link_directories(${PROJECT_SOURCE_DIR}/lib/amd64/)
-else()
-link_directories(${PROJECT_SOURCE_DIR}/lib/arm64/)
-endif()
-
 ###########
 ## Build ##
 ###########
