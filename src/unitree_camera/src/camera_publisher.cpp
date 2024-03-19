@@ -109,6 +109,7 @@ public:
 private:
     void timer_callback(const ros::TimerEvent &)
     {
+        ROS_INFO_STREAM("Processing current frames...");
         if (!cam->isOpened())
         {
             std::string msg = "Camera closed unexpectedly";
@@ -138,6 +139,8 @@ private:
 
                 sensor_msgs::ImagePtr msg_left = cv_bridge::CvImage(header, COLOR_ENCODING, left).toImageMsg();
                 sensor_msgs::ImagePtr msg_right = cv_bridge::CvImage(header, COLOR_ENCODING, right).toImageMsg();
+                ROS_INFO_STREAM("Publishing raw frames");
+
                 pub_raw_left.publish(*msg_left, camera_info);
                 pub_raw_right.publish(*msg_right, camera_info);
             }
@@ -151,6 +154,7 @@ private:
                 cv::flip(right, right, -1);
                 sensor_msgs::ImagePtr msg_left = cv_bridge::CvImage(header, COLOR_ENCODING, left).toImageMsg();
                 sensor_msgs::ImagePtr msg_right = cv_bridge::CvImage(header, COLOR_ENCODING, right).toImageMsg();
+                ROS_INFO_STREAM("Publishing rectified frames");
                 pub_rect_left.publish(*msg_left, camera_info);
                 pub_rect_right.publish(*msg_right, camera_info);
             }
@@ -162,6 +166,7 @@ private:
             {
                 if (!frame.empty())
                 {
+                    ROS_INFO_STREAM("Publishing depth frames");
                     sensor_msgs::ImagePtr depth_msg = cv_bridge::CvImage(header, DEPTH_ENCODING, frame).toImageMsg();
                     pub_depth.publish(*depth_msg);
                 }
@@ -170,6 +175,7 @@ private:
 
         // if (enable_point_cloud)
         // {
+        //     ROS_INFO_STREAM("Publishing point clouds");
         //     point_cloud_pub->publish();
         // }
     }
