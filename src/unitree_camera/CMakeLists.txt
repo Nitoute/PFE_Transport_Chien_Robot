@@ -11,7 +11,7 @@ add_compile_options(-std=c++14)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  rospy
+  roscpp
   std_msgs
   sensor_msgs
   cv_bridge
@@ -22,15 +22,30 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 ## System dependencies are found with CMake's conventions
-find_package(Boost REQUIRED COMPONENTS system)
 find_package(OpenCV 4 REQUIRED)
+if(OpenCV_FOUND)
+    include_directories(${OpenCV_INCLUDE_DIR})
+    message(STATUS "OpenCV ${OpenCV_VERSION} FOUND")
+    message(STATUS ${OpenCV_INCLUDE_DIR})
+    message(STATUS ${OpenCV_LIBS})
+else()
+    message(FATAL_ERROR "OpenCV Library Not Found")
+endif()
 
 catkin_package(
   INCLUDE_DIRS include
-  LIBRARIES unitree_camera
-  CATKIN_DEPENDS  UnitreeCameraSDK
+  # LIBRARIES unitree_camera
+  CATKIN_DEPENDS  roscpp std_msgs sensor_msgs cv_bridge pcl_ros image_transport
 #  DEPENDS system_lib
 )
+
+set(SDKLIBS unitree_camera tstc_V4L2_xu_camera udev systemlog ${OpenCV_LIBS})
+
+if(CMAKE_HOST_SYSTEM_PROCESSOR MATCHES "x86_64")
+link_directories(${PROJECT_SOURCE_DIR}/lib/amd64/)
+else()
+link_directories(${PROJECT_SOURCE_DIR}/lib/arm64/)
+endif()
 
 ###########
 ## Build ##
@@ -45,17 +60,12 @@ include_directories(
   ${OpenCV_INCLUDE_DIRS}
 )
 
-## Declare a C++ library
-add_library(${PROJECT_NAME}
-  src/${PUB_NAME}.cpp
-)
-
 ## Specify libraries to link a library or executable target against
 add_executable(${PUB_NAME} src/${PUB_NAME}.cpp src/${DEPTH_NODE}.cpp)
-add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
+add_dependencies(${PUB_NAME} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(${PUB_NAME}
   ${catkin_LIBRARIES}
-  UnitreeCameraSDK
+  ${SDKLIBS}
 )
 
 # add_executable(${DEPTH_NODE} src/${DEPTH_NODE}.cpp)

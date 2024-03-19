@@ -141,7 +141,8 @@ private:
 
         if (enable_rect)
         {
-            if (cam->getRectStereoFrame(left, right))
+            cv::Mat feim;
+            if (cam->getRectStereoFrame(left, right, feim))
             {
                 cv::flip(left, left, -1);
                 cv::flip(right, right, -1);
