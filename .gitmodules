@@ -11,3 +11,9 @@
 	path = opencv
 	url = git@github.com:opencv/opencv.git
 	branch = 4.x
+[submodule "src/vision_opencv"]
+	path = src/vision_opencv
+	url = git@github.com:Soralsei/vision_opencv.git
+	branch = melodic
+[submodule "src/vision_opencv/"]
+	branch = melodic

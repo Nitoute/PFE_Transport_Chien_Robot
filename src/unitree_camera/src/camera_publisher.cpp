@@ -7,13 +7,13 @@
 #include <opencv2/opencv.hpp>
 #include <image_transport/image_transport.h>
 #include "UnitreeCameraSDK.hpp"
-#include "depth_publisher.hpp"
+// #include "depth_publisher.hpp"
 #include <unistd.h>
 
 class CameraPublisher
 {
 private:
-    std::shared_ptr<UnitreeCamera> cam;
+    UnitreeCamera *cam;
 
     ros::NodeHandle node_handle;
     image_transport::ImageTransport it;
@@ -24,7 +24,7 @@ private:
     image_transport::CameraPublisher pub_rect_right;
     sensor_msgs::CameraInfo camera_info; // unsure how to get this from UnitreeCameraSDK
 
-    std::unique_ptr<DepthPublisher> point_cloud_pub;
+    // std::unique_ptr<DepthPublisher> point_cloud_pub;
     ros::Publisher pub_depth;
 
     bool enable_depth, enable_raw, enable_rect, enable_point_cloud;
@@ -35,7 +35,7 @@ private:
     int count = 0;
 
 public:
-    CameraPublisher() : node_handle("~"), it(node_handle)
+    CameraPublisher() : node_handle(), it(node_handle)
     {
         int device_node, frame_width, frame_height;
         float fps, offset_time;
@@ -52,8 +52,8 @@ public:
         node_handle.param<bool>("enable_rect", enable_rect, true);
         node_handle.param<bool>("enable_point_cloud", enable_point_cloud, false);
 
+        cam = new UnitreeCamera();
         ROS_INFO_STREAM("Starting camera with device node : " << device_node);
-        cam = std::make_shared<UnitreeCamera>(device_node);
 
         if (!cam->isOpened())
         {
@@ -68,23 +68,23 @@ public:
         {
             cam->setRawFrameSize(frame_size);
             cam->setRawFrameRate(fps);
-            pub_raw_left = it.advertiseCamera("~/image_raw/left", 10);
-            pub_raw_right = it.advertiseCamera("~/image_raw/right", 10);
+            pub_raw_left = it.advertiseCamera("image_raw/left", 10);
+            pub_raw_right = it.advertiseCamera("image_raw/right", 10);
         }
         if (enable_rect)
         {
             cam->setRectFrameSize(frame_size);
-            pub_rect_left = it.advertiseCamera("~/image_rect/left", 10);
-            pub_rect_right = it.advertiseCamera("~/image_rect/right", 10);
+            pub_rect_left = it.advertiseCamera("image_rect/left", 10);
+            pub_rect_right = it.advertiseCamera("image_rect/right", 10);
         }
         if (enable_depth)
         {
-            pub_depth = node_handle.advertise<sensor_msgs::Image>("~/image_depth", 10);
+            pub_depth = node_handle.advertise<sensor_msgs::Image>("image_depth", 10);
         }
-        if (enable_point_cloud)
-        {
-            point_cloud_pub = std::make_unique<DepthPublisher>(offset_time, cam, node_handle);
-        }
+        // if (enable_point_cloud)
+        // {
+        //     point_cloud_pub = std::make_unique<DepthPublisher>(offset_time, cam, node_handle);
+        // }
 
         timer = node_handle.createTimer<CameraPublisher>(ros::Duration(1 / fps), &CameraPublisher::timer_callback, this);
 
@@ -99,7 +99,11 @@ public:
 
     ~CameraPublisher()
     {
+        cam->stopStereoCompute();
         cam->stopCapture();
+        delete cam;
+        // if (!enable_point_cloud)
+        //     delete cam;
     }
 
 private:
@@ -165,10 +169,10 @@ private:
             }
         }
 
-        if (enable_point_cloud)
-        {
-            point_cloud_pub->publish();
-        }
+        // if (enable_point_cloud)
+        // {
+        //     point_cloud_pub->publish();
+        // }
     }
 };
 

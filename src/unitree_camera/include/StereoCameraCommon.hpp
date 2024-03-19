@@ -2,11 +2,12 @@
   * @file StereoCameraCommon.hpp
   * @brief This file is part of UnitreeCameraSDK, which declare stereo camera algorithm APIs.  
   * @details image capture, image rectification, disparity computation, depth image and point cloud generation
-  * @author ZhangChunyang
-  * @date  2021.07.31
-  * @version 1.0.1
+  * @author SunMingzhe
+  * @date  2021.12.1
+  * @version 1.1.0
   * @copyright Copyright (c)2020-2021, Hangzhou Yushu Technology Stock CO.LTD. All Rights Reserved.
   * Use of this source code is governed by the MPL-2.0 license, see LICENSE.
+  * @ref ZhangChunyang v1.0.1
   */
 #ifndef __STEREO_CAMERA_COMMOM_HPP__
 #define __STEREO_CAMERA_COMMOM_HPP__
@@ -21,7 +22,7 @@
 
 /**
   * @struct PCL
-  * @brief this struct is used for RGB point cloud capture and display
+  * @brief this struct is used for rendering point cloud by RGB color
   * @details pts for point coordinates (x, y, z), clr for point color (b, g, r)
   * @note point cloud simple type 
   * @attention point data element type float, color data element type uchar 
@@ -32,25 +33,18 @@ typedef struct PCL {
 }PCLType;
 /**
   * @class StereoCamera
-  * @brief this class integrate camera control and stereo vision algorithm 
+  * @brief this class provide the APIs of the algorithm and opration method of stereo cameras
   * @details this class is the base of UnitreeCameraSDK, it includes many functions, such as
   * camera frame capturing, image rectification, disparity computation, generating point cloud and etc.
   */
 class StereoCamera
 {
 private:
-    /**
-      * @struct TimeFrame
-      * @brief this struct is used for sharing frames with time stamp between threads
-      * @details data1 and data2 generated in a same time stamp 
-      * @note data1 and data2 type Mat 
-      */
     typedef struct TimeFrame{
         cv::Mat data1;                        ///< frame data
         cv::Mat data2;                        ///< frame data
         std::chrono::microseconds timeStamp;  ///< time since 1970-01-01 00:00:00, unit is microseconds(10^-6 s) 
     }TimeFrameType;
-    
 private:
     int m_radius = 0;
     int m_algorithm = 0;
@@ -61,22 +55,34 @@ private:
     int m_threshold = 120;
     float m_frameRate = 30.0;
     int m_ipLastSegment = 15;
-    
+
     bool m_shareMemSupport = false;
     bool m_udpH264Support = false;
     bool m_isOpened = false;
     bool m_isCompute = false;
-    
+    float maxdepth = 1;
+    float mindepth = 0.05;
+
+    int m_transmode = -1;
+    double m_transrate = 0;
+    double m_hfov = 90;
+    double default_pfov = 90;
+    double default_fov = 222;
+    double default_llfov = 180;
+    int m_depthmode = 1; 
+
+    cv::VideoWriter gstWriter;
+
     cv::Size m_frameSize;
     cv::Size m_rectSize;
-    
+
     TimeFrameType m_stampFrame, m_dispFrame;
     
     cv::Mat m_leftXi,m_leftRotation,m_leftIntrinsic,m_leftDistortion;
     cv::Mat m_rightXi,m_rightRotation,m_rightIntrinsic,m_rightDistortion;
     cv::Mat m_translation;
        
-    cv::Mat m_kfe, m_fmap[2], m_lmap[2][2], m_lagerFmap[2];
+    cv::Mat m_kfe, m_fmap[2][2], m_lmap[2][2], m_lagerFmap[2];
     
     SystemLog *m_log = nullptr;
     std::string m_logName = "StereoCamera";
@@ -88,7 +94,8 @@ private:
     
     std::thread *m_capWorker = nullptr;
     std::thread *m_dispWorker = nullptr;
-    
+
+
 public:
     /**
       * @fn StereoCamera
@@ -99,21 +106,20 @@ public:
       * @return None
       * @note initialize StereoCamera object by default settings
       * @code
-      * StereoCamera *pCam = new StereoCamera(); or StereoCamera cam;
+      *     StereoCamera *pCam = new StereoCamera(); // or StereoCamera cam;
       * @endcode
       */
     StereoCamera(void);
     /**
-      * @overload
       * @fn StereoCamera
-      * @brief StereoCamera constructor overload
+      * @brief StereoCamera constructor
       * @details use camera config file to init stereo camera
       * @param[in] fileName camera config file, include file path, for example: ~/test/stereoConfig.yaml
       * @param[out] None
       * @return None
       * @note initialize StereoCamera object by settings from configure file
       * @code
-      *  StereoCamera("path_to/config.yaml");
+      *     StereoCamera("path_to/config.yaml");
       * @endcode
       */
     StereoCamera(std::string fileName);
@@ -121,13 +127,13 @@ public:
       * @overload
       * @fn StereoCamera 
       * @brief StereoCamera constructor overload
-      * @details use camera device node number to init stereo camera
+      * @details use camera device node number to initialize stereo camera object
       * @param[in] deviceNode camera device node, for example: /dev/video0, camera device node: 0
       * @param[out] None
       * @return None
       * @note initialize StereoCamera object by device node number
       * @code
-      *  StereoCamera(0); // for /dev/video0
+      *     StereoCamera(0); // for /dev/video0
       * @endcode
       */
     StereoCamera(int deviceNode);
@@ -410,6 +416,10 @@ public:
       *     }
       * @endcode
       */
+
+
+    virtual void getDepthFrame(cv::Mat& dispf, cv::Mat& depth);
+
     virtual bool getPointCloud(std::vector<cv::Vec3f> &pcl, std::chrono::microseconds &timeStamp);
     /**
       * @overload
@@ -459,7 +469,7 @@ public:
       * @param[in] None
       * @param[out] left rect left image, use LONGLAT
       * @param[out] right rect right image, use LONGLAT
-      * @param[out] feim rect left image, use FISHEYE
+      * @param[out] feim rect left image, use PERSPECTIVE
       * @return true or false, if left, right and feim are not empty return true, otherwise return false 
       * @attention This funtion must be called after startCapture()
       * @note
@@ -473,6 +483,25 @@ public:
       */
     virtual bool getRectStereoFrame(cv::Mat &left, cv::Mat &right, cv::Mat &feim);
     /**
+      * @fn getRectStereoFrame
+      * @brief get stereo camera rectification image
+      * @details 
+      * @param[in] None
+      * @param[out] left rect left image, use PERSPECTIVE
+      * @param[out] right rect right image, use PERSPECTIVE
+      * @return true or false, if left, right are not empty return true, otherwise return false 
+      * @attention This funtion must be called after startCapture()
+      * @note
+      * @code
+      *     cam.startCapture();
+      *     left, right;
+      *     if(cam.getRectStereoFrame(left, right)){
+      *         //do something
+      *     }
+      * @endcode
+      */
+    virtual bool getRectStereoFrame(cv::Mat &left, cv::Mat &right);
+    /**
       * @overload 
       * @fn getRectStereoFrame
       * @brief get stereo camera rectification image
@@ -480,7 +509,7 @@ public:
       * @param[in] None
       * @param[out] left rect left image, use LONGLAT
       * @param[out] right rect right image, use LONGLAT
-      * @param[out] feim rect left image, use FISHEYE
+      * @param[out] feim rect left image, use PERSPECTIVE
       * @param[out] timeStamp images timeStamp
       * @return true or false, if left, right and feim are not empty return true, otherwise return false 
       * @attention This funtion must be called after startCapture()
@@ -619,6 +648,12 @@ public:
       * @endcode
       */
     virtual bool stopCapture(void);
+
+
+
 };
+
+
+
 
 #endif //__STEREO_CAMERA_COMMOM_HPP__

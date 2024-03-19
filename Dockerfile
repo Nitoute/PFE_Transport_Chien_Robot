@@ -54,7 +54,8 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-dynamic-reconfigure \
     ros-${ROS_DISTRO}-message-filters \
     ros-${ROS_DISTRO}-stereo-msgs \
-    && apt-get autoremove -y
+    gdb valgrind openssh-client nano \
+    && apt-get autoremove -y 
 
 WORKDIR ${WS}
 ADD src ./src/
