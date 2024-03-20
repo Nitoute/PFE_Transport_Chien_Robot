@@ -23,7 +23,7 @@ class UnitreeCamera;
 class DepthPublisher
 {
 public:
-    DepthPublisher(double offsetTime, UnitreeCamera *cam_, ros::NodeHandle);
+    DepthPublisher(double offsetTime, UnitreeCamera &cam_, ros::NodeHandle);
     ~DepthPublisher();
 
     void run();
@@ -41,7 +41,7 @@ private:
     void setupTransformationMatrices();
     cv::Mat getTranslationMatrix(char axis, float angle);
 
-    UnitreeCamera *cam;
+    const UnitreeCamera &cam;
     ros::NodeHandle nodeHandle;
 
     ros::Publisher topic_publisher_;

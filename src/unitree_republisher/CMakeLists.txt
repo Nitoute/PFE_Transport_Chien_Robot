@@ -57,6 +57,7 @@ include_directories(
 ## The recommended prefix ensures that target names across packages don't collide
 add_executable(imu_odom_pub src/imu_odom_pub.cpp)
 target_link_libraries(imu_odom_pub ${catkin_LIBRARIES} ${EXTRA_LIBS})
+add_dependencies(imu_odom_pub ${catkin_EXPORTED_TARGETS})
 
 # Mark executables for installation
 # See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
@@ -64,6 +65,10 @@ install(TARGETS imu_odom_pub
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
+install(DIRECTORY launch/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/launch)
+install(DIRECTORY config/
+  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/config)
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
 #   # myfile1

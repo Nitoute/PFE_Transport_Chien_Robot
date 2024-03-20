@@ -19,7 +19,11 @@
 
 #include "depth_publisher.hpp"
 
+<<<<<<< HEAD
 DepthPublisher::DepthPublisher(double offsetTime, UnitreeCamera *cam_, ros::NodeHandle nodeHandle_) : nodeHandle(nodeHandle_), offsetTime_(offsetTime), cam(cam_)
+=======
+DepthPublisher::DepthPublisher(double offsetTime, UnitreeCamera &cam_, ros::NodeHandle nodeHandle_) : nodeHandle(nodeHandle_), offsetTime_(offsetTime), cam(cam_)
+>>>>>>> 1ed0afb35421010b272720bb979a360c148df0b7
 {
     init();
 }

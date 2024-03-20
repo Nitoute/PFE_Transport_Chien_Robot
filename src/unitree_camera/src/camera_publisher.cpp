@@ -9,6 +9,10 @@
 #include "UnitreeCameraSDK.hpp"
 // #include "depth_publisher.hpp"
 #include <unistd.h>
+#include <yaml-cpp/yaml.h>
+
+#define LEFT false
+#define RIGHT true
 
 class CameraPublisher
 {
@@ -22,15 +26,18 @@ private:
     image_transport::CameraPublisher pub_raw_right;
     image_transport::CameraPublisher pub_rect_left;
     image_transport::CameraPublisher pub_rect_right;
-    sensor_msgs::CameraInfo camera_info; // unsure how to get this from UnitreeCameraSDK
+    sensor_msgs::CameraInfo camera_info_l;
+    sensor_msgs::CameraInfo camera_info_r;
 
     // std::unique_ptr<DepthPublisher> point_cloud_pub;
     ros::Publisher pub_depth;
 
+    std::string frame_id="";
     bool enable_depth, enable_raw, enable_rect, enable_point_cloud;
     ros::Timer timer;
     const std::string DEPTH_ENCODING = "8UC3";
     const std::string COLOR_ENCODING = "bgr8";
+    const std::string CALIB_FILE = "calib_params.yaml";
 
     int count = 0;
 
@@ -42,6 +49,7 @@ public:
 
         // Default device: /dev/video0
         node_handle.param<int>("device_node", device_node, 0);
+        node_handle.param<std::string>("frame_id", frame_id, "");
         node_handle.param<int>("frame_width", frame_width, 1856);
         node_handle.param<int>("frame_height", frame_height, 800);
         node_handle.param<float>("fps", fps, 30.0);
@@ -52,14 +60,14 @@ public:
         node_handle.param<bool>("enable_rect", enable_rect, true);
         node_handle.param<bool>("enable_point_cloud", enable_point_cloud, false);
 
-        cam = new UnitreeCamera();
         ROS_INFO_STREAM("Starting camera with device node : " << device_node);
+        cam = new UnitreeCamera(device_node);
 
         if (!cam->isOpened())
         {
             std::string msg = "Failed to open camera";
             ROS_ERROR_STREAM(msg);
-            throw std::logic_error(msg);
+            throw std::runtime_error(msg);
         }
 
         cv::Size frame_size = cv::Size(frame_width, frame_height);
@@ -83,13 +91,29 @@ public:
         }
         // if (enable_point_cloud)
         // {
-        //     point_cloud_pub = std::make_unique<DepthPublisher>(offset_time, cam, node_handle);
+        //     point_cloud_pub = std::make_unique<DepthPublisher>(offset_time, *cam, node_handle);
         // }
 
         timer = node_handle.createTimer<CameraPublisher>(ros::Duration(1 / fps), &CameraPublisher::timer_callback, this);
 
         ROS_INFO_STREAM("Device Position Number: " << cam->getPosNumber());
         cam->startCapture();
+
+        std::vector<cv::Mat> calib_left, calib_right;
+        if (!cam->getCalibParams(calib_left, LEFT))
+        {
+            std::string msg = "Failed to read left camera calibration parameters";
+            ROS_ERROR_STREAM(msg);
+            throw std::runtime_error(msg);
+        }
+        if (!cam->getCalibParams(calib_right, RIGHT))
+        {
+            std::string msg = "Failed to read right camera calibration parameters";
+            ROS_ERROR_STREAM(msg);
+            throw std::runtime_error(msg);
+        }
+        init_camera_info(calib_left, calib_right);
+
         if (enable_depth || enable_point_cloud)
         {
             cam->startStereoCompute();
@@ -107,6 +131,26 @@ public:
     }
 
 private:
+    void init_camera_info(std::vector<cv::Mat> calib_left, std::vector<cv::Mat> calib_right)
+    {
+        cv::Size raw_size = cam->getRawFrameSize();
+        std::vector<double>left_intrinsics(calib_left[0]);
+        std::vector<double>right_intrinsics(calib_right[0]);
+        // Left camera info
+        camera_info_l.width     = raw_size.width / 2;
+        camera_info_l.height    = raw_size.height;
+        camera_info_l.K         = std::array<double, 9>(calib_left[0]);
+        camera_info_l.R         = std::array<double, 9>(calib_left[3]);
+        camera_info_l.P         = std::array<double, 12>(calib_left[5]);
+
+        // Right camera info
+        camera_info_r.width     = raw_size.width / 2;
+        camera_info_r.height    = raw_size.height;
+        camera_info_r.K         = std::array<double, 9>(calib_right[0]);
+        camera_info_r.R         = std::array<double, 9>(calib_right[3]);
+        camera_info_r.P         = std::array<double, 12>(calib_right[5]);
+    }
+
     void timer_callback(const ros::TimerEvent &)
     {
         ROS_INFO_STREAM("Processing current frames...");
@@ -126,9 +170,10 @@ private:
 
         header.seq = this->count++;
         header.stamp = current_time;
-        header.frame_id = "map";
+        header.frame_id = frame_id;
 
-        camera_info.header = header;
+        camera_info_l.header = header;
+        camera_info_r.header = header;
 
         if (enable_raw)
         {
@@ -142,22 +187,23 @@ private:
                 sensor_msgs::ImagePtr msg_right = cv_bridge::CvImage(header, COLOR_ENCODING, right).toImageMsg();
                 ROS_INFO_STREAM("Publishing raw frames");
 
-                pub_raw_left.publish(*msg_left, camera_info);
-                pub_raw_right.publish(*msg_right, camera_info);
+                pub_raw_left.publish(*msg_left, camera_info_l);
+                pub_raw_right.publish(*msg_right, camera_info_r);
             }
         }
 
         if (enable_rect)
         {
-            if (cam->getRectStereoFrame(left, right))
+            cv::Mat feim;
+            if (cam->getRectStereoFrame(left, right, feim))
             {
                 cv::flip(left, left, -1);
                 cv::flip(right, right, -1);
                 sensor_msgs::ImagePtr msg_left = cv_bridge::CvImage(header, COLOR_ENCODING, left).toImageMsg();
                 sensor_msgs::ImagePtr msg_right = cv_bridge::CvImage(header, COLOR_ENCODING, right).toImageMsg();
                 ROS_INFO_STREAM("Publishing rectified frames");
-                pub_rect_left.publish(*msg_left, camera_info);
-                pub_rect_right.publish(*msg_right, camera_info);
+                pub_rect_left.publish(*msg_left, camera_info_l);
+                pub_rect_right.publish(*msg_right, camera_info_r);
             }
         }
 

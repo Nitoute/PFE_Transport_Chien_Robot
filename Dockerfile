@@ -1,7 +1,7 @@
 # FROM tiryoh/ros-desktop-vnc:melodic
 # ENV ROS_DISTRO=melodic
-# FROM arm64v8/ros:melodic-ros-base as builder
-FROM ros:melodic-ros-base as builder
+FROM arm64v8/ros:melodic-ros-base as builder
+# FROM ros:melodic-ros-base as builder
 ENV scripts=scripts
 ENV ROS_MASTER_URI=http://192.168.12.1:11311
 ARG WS=/opt/ros/PFE_Transport_Chien_Robot
@@ -62,9 +62,6 @@ ADD src ./src/
 ENV INSTALL_PATH=/home/unitree/custom_ws/install
 RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make install -DCMAKE_INSTALL_PREFIX=${INSTALL_PATH}"
 
-# FROM arm64v8/ros:melodic-ros-base
-# ARG INSTALL_PATH=/home/unitree/custom_ws/install
-# COPY --from=builder ${INSTALL_PATH} ${INSTALL_PATH}
 ENV WS=/opt/ros/PFE_Transport_Chien_Robot
 ENV ROS_MASTER_URI=http://localhost:11311
 
@@ -74,5 +71,6 @@ RUN sed --in-place --expression \
 
 
 # ADD ${scripts}/setup.sh ${scripts}/setup.sh
+
 
 # ADD UnitreecameraSDK ./UnitreecameraSDK

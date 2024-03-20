@@ -19,6 +19,7 @@
         if="$(arg front.enable_cam)">
         <arg name="fps" value="$(arg front.fps)" />
         <arg name="device_node" value="1" />
+        <arg name="frame_id" value="camera_face" />
 
         <arg name="frame_width" value="$(arg front.frame_width)" />
         <arg name="frame_height" value="$(arg front.frame_height)" />
@@ -47,6 +48,7 @@
         if="$(arg chin.enable_cam)">
         <arg name="fps" value="$(arg chin.fps)" />
         <arg name="device_node" value="0" />
+        <arg name="frame_id" value="camera_chin" />
 
         <arg name="frame_width" value="$(arg chin.frame_width)" />
         <arg name="frame_height" value="$(arg chin.frame_height)" />

@@ -1,6 +1,7 @@
 <launch>
     <arg name="fps" default="30.0" doc="The framerate of the camera." />
     <arg name="device_node" default="1" doc="Video device id (/dev/video*)" />
+    <arg name="frame_id" default="camera" doc="Camera frame id for transformations" />
 
     <arg name="frame_width" default="1856" doc="Captured frame width" />
     <arg name="frame_height" default="800" doc="Captured frame height" />
