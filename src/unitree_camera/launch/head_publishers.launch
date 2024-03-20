@@ -1,63 +1,62 @@
 <launch>
     <!-- Front camera -->
-    <arg name="front.enable_cam" default="true" doc="Enable the front camera of the GO1" />
+    <arg name="front_enable_cam" default="true" doc="Enable the front camera of the GO1" />
 
-    <arg name="front.fps" default="30.0" doc="The framerate of the front camera." />
-
-    <arg name="front.frame_width" default="1856" doc="Captured frame width" />
-    <arg name="front.frame_height" default="800" doc="Captured frame height" />
+    <arg name="front_fps" default="30.0" doc="The framerate of the front camera." />
+    <arg name="front_frame_width" default="928" doc="Captured frame width" />
+    <arg name="front_frame_height" default="400" doc="Captured frame height" />
 
     <arg name="offset_time" default="0.0"
         doc="Time offset between ROS master and executing board" />
 
-    <arg name="front.enable_raw" default="true" doc="Enable publishing of raw frames." />
-    <arg name="front.enable_rect" default="false" doc="Enable publishing of rectified frames." />
-    <arg name="front.enable_depth" default="false" doc="Enable publishing of depth map." />
-    <arg name="front.enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
+    <arg name="front_enable_raw" default="true" doc="Enable publishing of raw frames." />
+    <arg name="front_enable_rect" default="false" doc="Enable publishing of rectified frames." />
+    <arg name="front_enable_depth" default="false" doc="Enable publishing of depth map." />
+    <arg name="front_enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
     <include file="$(find unitree_camera)/launch/camera_publisher.launch"
-        if="$(arg front.enable_cam)">
-        <arg name="fps" value="$(arg front.fps)" />
+        if="$(arg front_enable_cam)">
+        <arg name="fps" value="$(arg front_fps)" />
         <arg name="device_node" value="1" />
         <arg name="frame_id" value="camera_face" />
 
-        <arg name="frame_width" value="$(arg front.frame_width)" />
-        <arg name="frame_height" value="$(arg front.frame_height)" />
+        <arg name="frame_width" value="$(arg front_frame_width)" />
+        <arg name="frame_height" value="$(arg front_frame_height)" />
 
         <arg name="offset_time" value="$(arg offset_time)" />
 
-        <arg name="enable_raw" value="$(arg front.enable_raw)" />
-        <arg name="enable_rect" value="$(arg front.enable_rect)" />
-        <arg name="enable_depth" value="$(arg front.enable_depth)" />
-        <arg name="enable_point_cloud" value="$(arg front.enable_point_cloud)" />
+        <arg name="enable_raw" value="$(arg front_enable_raw)" />
+        <arg name="enable_rect" value="$(arg front_enable_rect)" />
+        <arg name="enable_depth" value="$(arg front_enable_depth)" />
+        <arg name="enable_point_cloud" value="$(arg front_enable_point_cloud)" />
     </include>
 
     <!-- Chin camera -->
-    <arg name="chin.enable_cam" default="false" doc="Enable the chin camera of the GO1" />
-    <arg name="chin.fps" default="30.0" doc="The framerate of the chin camera." />
+    <arg name="chin_enable_cam" default="false" doc="Enable the chin camera of the GO1" />
+    <arg name="chin_fps" default="30.0" doc="The framerate of the chin camera." />
 
-    <arg name="chin.frame_width" default="1856" doc="Captured frame width" />
-    <arg name="chin.frame_height" default="800" doc="Captured frame height" />
+    <arg name="chin_frame_width" default="928" doc="Captured frame width" />
+    <arg name="chin_frame_height" default="400" doc="Captured frame height" />
 
-    <arg name="chin.enable_raw" default="true" doc="Enable publishing of raw frames." />
-    <arg name="chin.enable_rect" default="false" doc="Enable publishing of rectified frames." />
-    <arg name="chin.enable_depth" default="false" doc="Enable publishing of depth map." />
-    <arg name="chin.enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
+    <arg name="chin_enable_raw" default="true" doc="Enable publishing of raw frames." />
+    <arg name="chin_enable_rect" default="false" doc="Enable publishing of rectified frames." />
+    <arg name="chin_enable_depth" default="false" doc="Enable publishing of depth map." />
+    <arg name="chin_enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
     <include file="$(find unitree_camera)/launch/camera_publisher.launch"
-        if="$(arg chin.enable_cam)">
-        <arg name="fps" value="$(arg chin.fps)" />
+        if="$(arg chin_enable_cam)">
+        <arg name="fps" value="$(arg chin_fps)" />
         <arg name="device_node" value="0" />
         <arg name="frame_id" value="camera_chin" />
 
-        <arg name="frame_width" value="$(arg chin.frame_width)" />
-        <arg name="frame_height" value="$(arg chin.frame_height)" />
+        <arg name="frame_width" value="$(arg chin_frame_width)" />
+        <arg name="frame_height" value="$(arg chin_frame_height)" />
 
         <arg name="offset_time" value="$(arg offset_time)" />
 
-        <arg name="enable_raw" value="$(arg chin.enable_raw)" />
-        <arg name="enable_rect" value="$(arg chin.enable_rect)" />
-        <arg name="enable_depth" value="$(arg chin.enable_depth)" />
-        <arg name="enable_point_cloud" value="$(arg chin.enable_point_cloud)" />
+        <arg name="enable_raw" value="$(arg chin_enable_raw)" />
+        <arg name="enable_rect" value="$(arg chin_enable_rect)" />
+        <arg name="enable_depth" value="$(arg chin_enable_depth)" />
+        <arg name="enable_point_cloud" value="$(arg chin_enable_point_cloud)" />
     </include>
 </launch>

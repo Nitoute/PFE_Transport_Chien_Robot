@@ -32,7 +32,7 @@ private:
     // std::unique_ptr<DepthPublisher> point_cloud_pub;
     ros::Publisher pub_depth;
 
-    std::string frame_id="";
+    std::string frame_id = "";
     bool enable_depth, enable_raw, enable_rect, enable_point_cloud;
     ros::Timer timer;
     const std::string DEPTH_ENCODING = "8UC3";
@@ -76,18 +76,18 @@ public:
         {
             cam->setRawFrameSize(frame_size);
             cam->setRawFrameRate(fps);
-            pub_raw_left = it.advertiseCamera("image_raw/left", 10);
-            pub_raw_right = it.advertiseCamera("image_raw/right", 10);
+            pub_raw_left = it.advertiseCamera("image/raw/left", 10);
+            pub_raw_right = it.advertiseCamera("image/raw/right", 10);
         }
         if (enable_rect)
         {
             cam->setRectFrameSize(frame_size);
-            pub_rect_left = it.advertiseCamera("image_rect/left", 10);
-            pub_rect_right = it.advertiseCamera("image_rect/right", 10);
+            pub_rect_left = it.advertiseCamera("image/rect/left", 10);
+            pub_rect_right = it.advertiseCamera("image/rect/right", 10);
         }
         if (enable_depth)
         {
-            pub_depth = node_handle.advertise<sensor_msgs::Image>("image_depth", 10);
+            pub_depth = node_handle.advertise<sensor_msgs::Image>("image/depth", 10);
         }
         // if (enable_point_cloud)
         // {
@@ -123,7 +123,10 @@ public:
 
     ~CameraPublisher()
     {
-        cam->stopStereoCompute();
+        if (enable_depth || enable_point_cloud)
+        {
+            cam->stopStereoCompute();
+        }
         cam->stopCapture();
         delete cam;
         // if (!enable_point_cloud)
@@ -134,26 +137,47 @@ private:
     void init_camera_info(std::vector<cv::Mat> calib_left, std::vector<cv::Mat> calib_right)
     {
         cv::Size raw_size = cam->getRawFrameSize();
-        std::vector<double>left_intrinsics(calib_left[0]);
-        std::vector<double>right_intrinsics(calib_right[0]);
+        std::vector<double> lk(calib_left[0].reshape(1, 1));
+        boost::array<double, 9> left_intrinsics;
+        std::copy(lk.begin(), lk.end(), left_intrinsics.begin());
+
+        std::vector<double> rk(calib_right[0].reshape(1, 1));
+        boost::array<double, 9> right_intrinsics;
+        std::copy(rk.begin(), rk.end(), right_intrinsics.begin());
+
+        std::vector<double> lr(calib_left[3].reshape(1, 1));
+        boost::array<double, 9> left_rect;
+        std::copy(lr.begin(), lr.end(), left_rect.begin());
+
+        std::vector<double> rr(calib_right[3].reshape(1, 1));
+        boost::array<double, 9> right_rect;
+        std::copy(rr.begin(), rr.end(), right_rect.begin());
+
+        // std::vector<double> lp(calib_left[5]);
+        // boost::array<double, 12> left_P;
+        // std::copy(lp.begin(), lp.end(), left_P.begin());
+
+        // std::vector<double> rp(calib_right[5]);
+        // boost::array<double, 12> right_p;
+        // std::copy(rp.begin(), rp.end(), right_p.begin());
         // Left camera info
-        camera_info_l.width     = raw_size.width / 2;
-        camera_info_l.height    = raw_size.height;
-        camera_info_l.K         = std::array<double, 9>(calib_left[0]);
-        camera_info_l.R         = std::array<double, 9>(calib_left[3]);
-        camera_info_l.P         = std::array<double, 12>(calib_left[5]);
+        camera_info_l.width = raw_size.width / 2;
+        camera_info_l.height = raw_size.height;
+        camera_info_l.K = left_intrinsics;
+        camera_info_l.R = left_rect;
+        // camera_info_l.P         = left_P;
 
         // Right camera info
-        camera_info_r.width     = raw_size.width / 2;
-        camera_info_r.height    = raw_size.height;
-        camera_info_r.K         = std::array<double, 9>(calib_right[0]);
-        camera_info_r.R         = std::array<double, 9>(calib_right[3]);
-        camera_info_r.P         = std::array<double, 12>(calib_right[5]);
+        camera_info_r.width = raw_size.width / 2;
+        camera_info_r.height = raw_size.height;
+        camera_info_r.K = right_intrinsics;
+        camera_info_r.R = right_rect;
+        // camera_info_r.P         = right_p;
     }
 
     void timer_callback(const ros::TimerEvent &)
     {
-        ROS_INFO_STREAM("Processing current frames...");
+        ROS_DEBUG_STREAM("Publishing frames");
         if (!cam->isOpened())
         {
             std::string msg = "Camera closed unexpectedly";
@@ -177,15 +201,22 @@ private:
 
         if (enable_raw)
         {
-            ROS_INFO_STREAM("Reading raw frames");
             if (cam->getRawFrame(frame, time))
             {
-                frame(cv::Rect(0, 0, frame.size().width / 2, frame.size().height)).copyTo(right);
-                frame(cv::Rect(frame.size().width / 2, 0, frame.size().width / 2, frame.size().height)).copyTo(left);
+                // frame(cv::Rect(0, 0, frame.size().width / 2, frame.size().height)).copyTo(left);
+                // frame(cv::Rect(frame.size().width / 2, 0, frame.size().width / 2, frame.size().height)).copyTo(right);
 
-                sensor_msgs::ImagePtr msg_left = cv_bridge::CvImage(header, COLOR_ENCODING, left).toImageMsg();
-                sensor_msgs::ImagePtr msg_right = cv_bridge::CvImage(header, COLOR_ENCODING, right).toImageMsg();
-                ROS_INFO_STREAM("Publishing raw frames");
+                sensor_msgs::ImagePtr msg_left = cv_bridge::CvImage(
+                                                     header,
+                                                     COLOR_ENCODING,
+                                                     frame(cv::Rect(0, 0, frame.size().width / 2, frame.size().height)))
+                                                     .toImageMsg();
+                sensor_msgs::ImagePtr msg_right = cv_bridge::CvImage(
+                                                     header,
+                                                     COLOR_ENCODING,
+                                                     frame(cv::Rect(frame.size().width / 2, 0, frame.size().width / 2, frame.size().height)))
+                                                     .toImageMsg();
+                // ROS_INFO_STREAM("Publishing raw frames");
 
                 pub_raw_left.publish(*msg_left, camera_info_l);
                 pub_raw_right.publish(*msg_right, camera_info_r);
@@ -201,7 +232,7 @@ private:
                 cv::flip(right, right, -1);
                 sensor_msgs::ImagePtr msg_left = cv_bridge::CvImage(header, COLOR_ENCODING, left).toImageMsg();
                 sensor_msgs::ImagePtr msg_right = cv_bridge::CvImage(header, COLOR_ENCODING, right).toImageMsg();
-                ROS_INFO_STREAM("Publishing rectified frames");
+                // ROS_INFO_STREAM("Publishing rectified frames");
                 pub_rect_left.publish(*msg_left, camera_info_l);
                 pub_rect_right.publish(*msg_right, camera_info_r);
             }
@@ -213,7 +244,7 @@ private:
             {
                 if (!frame.empty())
                 {
-                    ROS_INFO_STREAM("Publishing depth frames");
+                    // ROS_INFO_STREAM("Publishing depth frames");
                     sensor_msgs::ImagePtr depth_msg = cv_bridge::CvImage(header, DEPTH_ENCODING, frame).toImageMsg();
                     pub_depth.publish(*depth_msg);
                 }

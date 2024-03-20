@@ -1,7 +1,7 @@
 # FROM tiryoh/ros-desktop-vnc:melodic
 # ENV ROS_DISTRO=melodic
-FROM arm64v8/ros:melodic-ros-base as builder
-# FROM ros:melodic-ros-base as builder
+# FROM arm64v8/ros:melodic-ros-base as builder
+FROM ros:melodic-ros-base as builder
 ENV scripts=scripts
 ENV ROS_MASTER_URI=http://192.168.12.1:11311
 ARG WS=/opt/ros/PFE_Transport_Chien_Robot
@@ -69,6 +69,7 @@ RUN sed --in-place --expression \
     '$isource "${WS}/devel/setup.bash"' \
     /ros_entrypoint.sh
 
+RUN apt-get install -y --no-install-recommends ros-${ROS_DISTRO}-image-view
 
 # ADD ${scripts}/setup.sh ${scripts}/setup.sh
 
