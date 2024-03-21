@@ -35,7 +35,8 @@ private:
     std::string frame_id = "";
     bool enable_depth, enable_raw, enable_rect, enable_point_cloud;
     ros::Timer timer;
-    const std::string DEPTH_ENCODING = "8UC3";
+    // const std::string DEPTH_ENCODING = "8UC3";
+    const std::string DEPTH_ENCODING = "bgr8";
     const std::string COLOR_ENCODING = "bgr8";
     const std::string CALIB_FILE = "calib_params.yaml";
 
@@ -253,7 +254,7 @@ private:
 
         // if (enable_point_cloud)
         // {
-        //     ROS_INFO_STREAM("Publishing point clouds");
+        //     // ROS_INFO_STREAM("Publishing point clouds");
         //     point_cloud_pub->publish();
         // }
     }

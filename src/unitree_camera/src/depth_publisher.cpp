@@ -19,18 +19,15 @@
 
 #include "depth_publisher.hpp"
 
-<<<<<<< HEAD
-DepthPublisher::DepthPublisher(double offsetTime, UnitreeCamera *cam_, ros::NodeHandle nodeHandle_) : nodeHandle(nodeHandle_), offsetTime_(offsetTime), cam(cam_)
-=======
-DepthPublisher::DepthPublisher(double offsetTime, UnitreeCamera &cam_, ros::NodeHandle nodeHandle_) : nodeHandle(nodeHandle_), offsetTime_(offsetTime), cam(cam_)
->>>>>>> 1ed0afb35421010b272720bb979a360c148df0b7
+DepthPublisher::DepthPublisher(double offsetTime, UnitreeCamera &cam_, ros::NodeHandle nodeHandle_, std::string frame_id_) : nodeHandle(nodeHandle_), offsetTime_(offsetTime), cam(cam_), frameIdName(frame_id_)
 {
     init();
 }
 
 DepthPublisher::~DepthPublisher()
 {
-    delete cam;
+    // delete cam;
+    // false
 }
 
 void DepthPublisher::publish()
@@ -40,13 +37,11 @@ void DepthPublisher::publish()
 
     if (!cam->getPointCloud(curPCL, timeStamp))
     {
-        usleep(1000);
         return;
     }
 
     if (camPosNum == 2)
     {
-        sleep(0.005);
         return;
     }
 
@@ -69,13 +64,11 @@ void DepthPublisher::run()
 void DepthPublisher::init()
 {
     camPosNum = cam->getPosNumber();
-    frameIdName = "trunk";
-    pointCloudName = "point_cloud_";
-    rangeName = "range_visual_";
+    pointCloudName = "point_cloud";
+    rangeName = "range_visual";
 
     initCamera();
 }
-
 
 void DepthPublisher::processPointCloud(const std::vector<PCLType> &curPCL, pcl::PointCloud<pcl::PointXYZRGB>::Ptr &cloud)
 {
@@ -225,32 +218,6 @@ void DepthPublisher::initCamera()
 {
     if (camPosNum != 2)
     {
-        cam->startStereoCompute();
-
-        switch (camPosNum)
-        {
-        case 1:
-            pointCloudName += "face";
-            rangeName += "face";
-            break;
-        case 2:
-            pointCloudName += "chin";
-            break;
-        case 3:
-            pointCloudName += "left";
-            rangeName += "left";
-            break;
-        case 4:
-            pointCloudName += "right";
-            rangeName += "right";
-            break;
-        case 5:
-            pointCloudName += "rearDown";
-            break;
-        default:
-            break;
-        }
-
         std::cout << "Camera PositionNumber -> " << camPosNum << " Point Cloud Name ->" << pointCloudName << std::endl;
 
         setupTransformationMatrices();
@@ -335,26 +302,3 @@ cv::Mat DepthPublisher::getTranslationMatrix(char axis, float angle)
 
     return mat;
 }
-
-// int main(int argc, char **argv)
-// {
-//     std::string node_name;
-//     if (argc < 3)
-//     {
-//         printf("Tips: if use rosrun, execute: rosrun pkgname node_executable_bin node_name _params:=value ...\n");
-//         node_name = std::string("unitree_camera_node");
-//     }
-//     else
-//     {
-//         node_name = std::string(argv[2]);
-//     }
-//     double offsetTime = static_cast<double>(std::atof(argv[3]));
-//     fprintf(stderr, "Initializing ROS");
-//     ros::init(argc, argv, node_name);
-//     fprintf(stderr, "ROS inited");
-
-//     DepthPublisher node(offsetTime);
-//     node.run();
-
-//     return 0;
-// }

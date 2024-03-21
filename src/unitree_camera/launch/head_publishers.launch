@@ -15,7 +15,7 @@
     <arg name="front_enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
     <include file="$(find unitree_camera)/launch/camera_publisher.launch"
-        if="$(arg front_enable_cam)">
+        if="$(arg front_enable_cam)" ns="camera_front">
         <arg name="fps" value="$(arg front_fps)" />
         <arg name="device_node" value="1" />
         <arg name="frame_id" value="camera_face" />
@@ -44,7 +44,7 @@
     <arg name="chin_enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
     <include file="$(find unitree_camera)/launch/camera_publisher.launch"
-        if="$(arg chin_enable_cam)">
+        if="$(arg chin_enable_cam)" ns="camera_chin">
         <arg name="fps" value="$(arg chin_fps)" />
         <arg name="device_node" value="0" />
         <arg name="frame_id" value="camera_chin" />

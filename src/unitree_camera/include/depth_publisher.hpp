@@ -23,7 +23,7 @@ class UnitreeCamera;
 class DepthPublisher
 {
 public:
-    DepthPublisher(double offsetTime, UnitreeCamera &cam_, ros::NodeHandle);
+    DepthPublisher(double offsetTime, UnitreeCamera &cam_, ros::NodeHandle, std::string frame_id_);
     ~DepthPublisher();
 
     void run();

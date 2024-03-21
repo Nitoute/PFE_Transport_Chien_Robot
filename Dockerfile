@@ -63,7 +63,7 @@ ENV INSTALL_PATH=/home/unitree/custom_ws/install
 RUN /bin/bash -c "source /opt/ros/${ROS_DISTRO}/setup.bash && catkin_make install -DCMAKE_INSTALL_PREFIX=${INSTALL_PATH}"
 
 ENV WS=/opt/ros/PFE_Transport_Chien_Robot
-ENV ROS_MASTER_URI=http://localhost:11311
+# ENV ROS_MASTER_URI=http://localhost:11311
 
 RUN sed --in-place --expression \
     '$isource "${WS}/devel/setup.bash"' \
