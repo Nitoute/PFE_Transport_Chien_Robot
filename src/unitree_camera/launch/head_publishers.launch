@@ -15,7 +15,7 @@
     <arg name="front_enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
     <include file="$(find unitree_camera)/launch/camera_publisher.launch"
-        if="$(arg front_enable_cam)" ns="camera_front">
+        if="$(arg front_enable_cam)" ns="camera_face">
         <arg name="fps" value="$(arg front_fps)" />
         <arg name="device_node" value="1" />
         <arg name="frame_id" value="camera_face" />

@@ -26,7 +26,6 @@ catkin_package(
 )
 
 ## System dependencies are found with CMake's conventions
-find_package(yaml-cpp REQUIRED)
 find_package(OpenCV 4 REQUIRED)
 if(OpenCV_FOUND)
     include_directories(${OpenCV_INCLUDE_DIR})
@@ -75,7 +74,6 @@ target_link_libraries(${PUB_NAME}
   ${LIBRARY_OUTPUT_PATH}/libtstc_V4L2_xu_camera.a
   ${LIBRARY_OUTPUT_PATH}/libsystemlog.a
   udev
-  yaml-cpp
   ${OpenCV_LIBS}
 )
 

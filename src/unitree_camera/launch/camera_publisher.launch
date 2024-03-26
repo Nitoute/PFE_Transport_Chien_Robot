@@ -17,6 +17,7 @@
 
     <param name="fps" value="$(arg fps)" />
     <param name="device_node" value="$(arg device_node)" />
+    <param name="frame_id" value="$(arg frame_id)"/>
 
     <param name="frame_width" value="$(arg frame_width)" />
     <param name="frame_height" value="$(arg frame_height)" />

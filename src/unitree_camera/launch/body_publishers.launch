@@ -44,7 +44,7 @@
     <arg name="right_enable_point_cloud" default="false" doc="Enable publishing of point cloud data" />
 
     <include file="$(find unitree_camera)/launch/camera_publisher.launch"
-        if="$(arg right_enable_cam)">
+        if="$(arg right_enable_cam)" ns="camera_right">
         <arg name="fps" value="$(arg right_fps)" />
         <arg name="device_node" value="0" />
 

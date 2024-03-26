@@ -27,47 +27,50 @@
         doc="Whether to launch keyboard control for the robot or not." />
 
     <!-- sync rgb/depth images and camera info per camera -->
-    <group ns="camera_face">
-        <node pkg="rtabmap_sync" type="rgbd_sync" name="rgbd_sync">
+    <!-- <group ns="camera_face">
+        <node pkg="nodelet" type="nodelet" name="rgbd_sync" args="standalone rtabmap_ros/rgbd_sync"
+            output="screen">
             <remap from="rgb/image" to="image/rect/left" />
             <remap from="depth/image" to="image/depth" />
-            <remap from="rgb/camera_info" to="image/rect/left/camera_info" />
+            <remap from="rgb/camera_info" to="image/rect/camera_info" />
             <param name="approx_sync" value="false" />
         </node>
     </group>
     <group ns="camera_left">
-        <node pkg="rtabmap_sync" type="rgbd_sync" name="rgbd_sync">
+        <node pkg="nodelet" type="nodelet" name="rgbd_sync" args="standalone rtabmap_ros/rgbd_sync"
+            output="screen">
             <remap from="rgb/image" to="image/rect/left" />
             <remap from="depth/image" to="image/depth" />
-            <remap from="rgb/camera_info" to="image/rect/left/camera_info" />
+            <remap from="rgb/camera_info" to="image/rect/camera_info" />
             <param name="approx_sync" value="false" />
         </node>
     </group>
     <group ns="camera_right">
-        <node pkg="rtabmap_sync" type="rgbd_sync" name="rgbd_sync">
+        <node pkg="nodelet" type="nodelet" name="rgbd_sync" args="standalone rtabmap_ros/rgbd_sync"
+            output="screen">
             <remap from="rgb/image" to="image/rect/left" />
             <remap from="depth/image" to="image/depth" />
-            <remap from="rgb/camera_info" to="image/rect/left/camera_info" />
+            <remap from="rgb/camera_info" to="image/rect/camera_info" />
             <param name="approx_sync" value="false" />
         </node>
-    </group>
+    </group> -->
 
-    <include file="$(find unitree_nav)/launch/go1_bringup.launch">
+    <include file="$(find unitree_nav)/launch/go1_bringup.launch" ns="base_controller">
         <arg name="keyboard_control" value="$(arg keyboard_control)" />
     </include>
 
     <group ns="rtabmap">
 
         <!-- sync all cameras together -->
-        <node pkg="rtabmap_sync" type="stereo_sync" name="stereo_sync" output="screen">
+        <!-- <node pkg="rtabmap_ros" type="rgbdx_sync" name="rgbdx_sync" output="screen">
             <remap from="rgbd_image0" to="/camera_left/rgbd_image" />
             <remap from="rgbd_image1" to="/camera_face/rgbd_image" />
             <remap from="rgbd_image2" to="/camera_right/rgbd_image" />
             <param name="rgbd_cameras" type="int" value="3" />
-        </node>
+        </node> -->
 
         <!-- Odometry -->
-        <node pkg="rtabmap_odom" type="rgbd_odometry" name="rgbd_odometry" output="screen">
+        <!-- <node pkg="rtabmap_ros" type="rgbd_odometry" name="rgbd_odometry" output="screen">
             <remap from="imu" to="/imu" />
 
             <param name="subscribe_rgbd" type="bool" value="true" />
@@ -76,17 +79,23 @@
             <param name="wait_for_imu_to_init" type="bool" value="true" />
 
             <param name="Odom/ImageDecimation" type="int" value="2" />
-        </node>
+        </node> -->
 
         <!-- Visual SLAM -->
-        <node name="rtabmap" pkg="rtabmap_slam" type="rtabmap" output="screen"
+        <node name="rtabmap" pkg="rtabmap_ros" type="rtabmap" output="screen"
             args="$(arg rtabmap_args)">
-            <remap from="imu" to="/imu" />
+            <remap from="imu" to="/base_controller/imu" />
+            <remap from="odom" to="/base_controller/odom" />
+            <remap from="depth/image" to="/camera_face/image/depth" />
+            <remap from="rgb/image" to="/camera_face/image/rect/left" />
+            <!-- <remap from="rgb/camera_info" to="/camera_face/image/rect/camera_info" /> -->
 
-            <param name="subscribe_scan_cloud" type="bool" value="true" />
-            <param name="subscribe_depth" type="bool" value="false" />
-            <param name="subscribe_rgbd" type="bool" value="true" />
-            <param name="rgbd_cameras" type="int" value="0" />
+            <param name="queue_size" type="int" value="1000" />
+
+            <param name="subscribe_depth" type="bool" value="true" />
+            <param name="subscribe_rgb" type="bool" value="true" />
+            <!-- <param name="subscribe_rgbd" type="bool" value="true" /> -->
+            <!-- <param name="rgbd_cameras" type="int" value="0" /> -->
             <param name="frame_id" type="string" value="base" />
 
             <param name="Grid/RangeMin" type="string" value="0.1" /> <!-- to avoid adding legs as
@@ -97,12 +106,20 @@
         </node>
 
         <!-- Visualisation RTAB-Map -->
-        <node pkg="rtabmap_viz" type="rtabmap_viz" name="rtabmap_viz"
-            args="-d $(find rtabmap_demos)/launch/config/rgbd_gui.ini" output="screen"
+        <node pkg="rtabmap_ros" type="rtabmapviz" name="rtabmapviz"
+            args="-d $(find rtabmap_ros)/launch/config/rgbd_gui.ini" output="screen"
             if="$(arg use_rtabmapviz)">
-            <param name="subscribe_depth" type="bool" value="false" />
-            <param name="subscribe_rgbd" type="bool" value="true" />
-            <param name="subscribe_odom_info" type="bool" value="true" />
+            <remap from="odom" to="/base_controller/odom" />
+            <remap from="depth/image" to="/camera_face/image/depth" />
+            <remap from="rgb/image" to="/camera_face/image/rect/left" />
+            <!-- <remap from="rgb/camera_info" to="/camera_face/image/rect/camera_info" /> -->
+
+            <param name="queue_size" type="int" value="1000" />
+
+            <param name="subscribe_depth" type="bool" value="true" />
+            <param name="subscribe_rgb" type="bool" value="true" />
+            <!-- <param name="subscribe_rgbd" type="bool" value="true" /> -->
+            <param name="subscribe_odom_info" type="bool" value="false" />
             <param name="frame_id" type="string" value="base" />
             <param name="rgbd_cameras" type="int" value="0" />
         </node>

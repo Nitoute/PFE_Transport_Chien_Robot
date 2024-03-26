@@ -3,7 +3,7 @@
 # FROM arm64v8/ros:melodic-ros-base as builder
 FROM ros:melodic-ros-base as builder
 ENV scripts=scripts
-ENV ROS_MASTER_URI=http://192.168.12.1:11311
+ENV ROS_MASTER_URI=http://localhost:11311
 ARG WS=/opt/ros/PFE_Transport_Chien_Robot
 WORKDIR /src/
 
@@ -54,6 +54,7 @@ RUN --mount=type=cache,target=/var/cache/apt \
     ros-${ROS_DISTRO}-dynamic-reconfigure \
     ros-${ROS_DISTRO}-message-filters \
     ros-${ROS_DISTRO}-stereo-msgs \
+    ros-${ROS_DISTRO}-image-view \
     gdb valgrind openssh-client nano \
     && apt-get autoremove -y 
 
@@ -69,7 +70,7 @@ RUN sed --in-place --expression \
     '$isource "${WS}/devel/setup.bash"' \
     /ros_entrypoint.sh
 
-RUN apt-get install -y --no-install-recommends ros-${ROS_DISTRO}-image-view
+ENV ROS_MASTER_URI=http://192.168.123.161:11311
 
 # ADD ${scripts}/setup.sh ${scripts}/setup.sh
 
