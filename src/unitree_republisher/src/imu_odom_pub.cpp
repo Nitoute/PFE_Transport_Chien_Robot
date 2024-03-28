@@ -50,7 +50,7 @@ void publish_odom(ros::Time current_time)
     msg_odom.header.seq = seq;
     msg_odom.header.stamp = current_time;
     msg_odom.header.frame_id = "odom";
-    msg_odom.child_frame_id = "base_link";
+    msg_odom.child_frame_id = "trunk";
 
     msg_odom.pose.pose.position.x = position[0];
     msg_odom.pose.pose.position.y = position[1];
@@ -74,7 +74,7 @@ void broadcast_tf(tf::TransformBroadcaster odom_broadcaster, ros::Time current_t
 
     odom_trans.header.stamp = current_time;
     odom_trans.header.frame_id = "odom";
-    odom_trans.child_frame_id = "base_link";
+    odom_trans.child_frame_id = "trunk";
 
     odom_trans.transform.translation.x = position[0];
     odom_trans.transform.translation.y = position[1];
