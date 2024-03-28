@@ -51,4 +51,4 @@ roslaunch unitree_republisher imu_odom.launch
 
 ## Useful links
 - Trello kanban link : https://trello.com/b/TMi6WSX4/pfe-transport-go1
-- Overleaf report link : https://www.overleaf.com/2373497429rbycvrqmqqsm#0de2a5
+- Overleaf report link : https://www.overleaf.com/read/szgpkjwhhbss#cdd1e6
